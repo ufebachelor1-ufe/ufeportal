@@ -1,0 +1,435 @@
+/* ══════════════════════════════════════════════════════════════════
+   Calendar Custom Styles - Navy/Gold Theme
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Calendar container wrapper */
+.calendar-wrapper {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 240, 0, 0.2);
+  border-radius: 6px;
+  padding: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ─── Toolbar (header) ─── */
+.fc .fc-toolbar {
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #0132a6;
+  font-family: 'Montserrat','DM Sans', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Toolbar buttons */
+.fc .fc-button {
+  background: rgba(1, 50, 166, 0.08);
+  border: 1px solid rgba(1, 50, 166, 0.2);
+  color: #0132a6;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Montserrat','DM Mono', monospace;
+  transition: all 0.2s;
+}
+
+.fc .fc-button:hover {
+  background: rgba(255, 240, 0, 0.15);
+  border-color: #fff000;
+  color: #0132a6;
+}
+
+.fc .fc-button:focus {
+  box-shadow: 0 0 0 2px rgba(255, 240, 0, 0.2);
+}
+
+.fc .fc-button-primary:not(:disabled):active,
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+  background: #fff000;
+  border-color: #fff000;
+  color: #0132a6;
+  font-weight: 700;
+}
+
+.fc .fc-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ─── Table structure ─── */
+.fc-theme-standard .fc-scrollgrid {
+  border-color: rgba(1, 50, 166, 0.2);
+  border-width: 2px;
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border-color: rgba(1, 50, 166, 0.15);
+  border-width: 1.5px;
+}
+
+/* Day headers (Mon, Tue, etc.) */
+.fc .fc-col-header-cell {
+  background: rgba(1, 50, 166, 0.08);
+  padding: 0.5rem;
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #0132a6;
+  font-family: 'Montserrat','DM Mono', monospace;
+  border-color: rgba(1, 50, 166, 0.2);
+  border-width: 1.5px;
+}
+
+/* Day cells */
+.fc .fc-daygrid-day {
+  background: #ffffff;
+  transition: background 0.2s;
+}
+
+.fc .fc-daygrid-day:hover {
+  background: rgba(255, 240, 0, 0.08);
+  cursor: pointer;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background: rgba(255, 240, 0, 0.15) !important;
+  border: 1px solid rgba(255, 240, 0, 0.4);
+}
+
+/* Day numbers */
+.fc .fc-daygrid-day-number {
+  color: #0132a6;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  font-family: 'Montserrat','DM Sans', sans-serif;
+}
+
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+  color: #0132a6;
+  font-weight: 700;
+  background: #fff000;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Other month days (grayed out) */
+.fc .fc-daygrid-day.fc-day-other .fc-daygrid-day-number {
+  color: rgba(1, 50, 166, 0.25);
+}
+
+/* ─── Events ─── */
+.fc .fc-event {
+  font-size: 0.7rem;
+  padding: 2px 4px;
+  border-radius: 3px;
+  border: none;
+  font-weight: 600;
+  margin-bottom: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family:  'Montserrat','DM Sans', sans-serif;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.fc .fc-event:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.fc .fc-daygrid-event-dot {
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+}
+
+/* "More" link */
+.fc .fc-daygrid-more-link {
+  color: #0132a6;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Montserrat','DM Mono', monospace;
+}
+
+.fc .fc-daygrid-more-link:hover {
+  color: #fff000;
+  text-decoration: none;
+  background: rgba(255, 240, 0, 0.15);
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+/* ─── Popover (when clicking "more") ─── */
+.fc .fc-popover {
+  background: rgba(15, 37, 64, 0.95);
+  border: 1px solid rgba(240, 165, 0, 0.3);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.fc .fc-popover-header {
+  background: rgba(240, 165, 0, 0.15);
+  color: #e8c96a;
+  font-weight: 700;
+  padding: 0.5rem;
+  font-family: 'Montserrat','DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(240, 165, 0, 0.2);
+}
+
+.fc .fc-popover-body {
+  padding: 0.5rem;
+}
+
+.fc .fc-popover-close {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.2rem;
+}
+
+.fc .fc-popover-close:hover {
+  color: #f0a500;
+}
+
+/* ─── Mobile optimizations ─── */
+@media (max-width: 768px) {
+  .calendar-wrapper {
+    padding: 0.75rem;
+  }
+
+  .fc .fc-toolbar {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .fc .fc-toolbar-title {
+    font-size: 1rem;
+  }
+
+  .fc .fc-button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.65rem;
+  }
+
+  .fc .fc-col-header-cell {
+    font-size: 0.6rem;
+    padding: 0.4rem 0.2rem;
+  }
+
+  .fc .fc-daygrid-day-number {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.3rem;
+  }
+
+  .fc .fc-event {
+    font-size: 0.6rem;
+    padding: 1px 3px;
+  }
+
+  .fc .fc-daygrid-event-dot {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+/* ─── Scrollbar (if needed) ─── */
+.fc-scroller::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.fc-scroller::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 3px;
+}
+
+.fc-scroller::-webkit-scrollbar-thumb {
+  background: rgba(240, 165, 0, 0.3);
+  border-radius: 3px;
+}
+
+.fc-scroller::-webkit-scrollbar-thumb:hover {
+  background: rgba(240, 165, 0, 0.5);
+}
+
+/* ═══════════════════════════════════
+   Centered Modal Popover
+═══════════════════════════════════ */
+
+/* ═══════════════════════════════════
+   Centered Modal (Styled Like +More)
+═══════════════════════════════════ */
+
+.calendar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s ease forwards;
+}
+
+.calendar-modal {
+  background: #0f2540; /* solid navy */
+  border: 1px solid rgba(240, 165, 0, 0.35);
+  border-radius: 8px;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.6);
+
+  min-width: 340px;
+  max-width: 420px;
+  width: 92%;
+
+  overflow: hidden;
+  animation: scaleIn 0.2s ease forwards;
+}
+
+/* Header — same as old +more */
+.calendar-modal .fc-popover-header {
+  background: rgba(240, 165, 0, 0.12);
+  color: #f0a500;
+  font-weight: 700;
+  padding: 0.7rem 1rem;
+  font-family: 'Montserrat','DM Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(240, 165, 0, 0.2);
+}
+
+/* Body */
+.calendar-modal .fc-popover-body {
+  padding: 0.8rem 1rem;
+}
+
+/* Event row */
+.modal-event {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.modal-event:hover {
+  background: rgba(255, 240, 0, 0.08);
+}
+
+.event-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.event-title {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #ffffff;
+}
+
+.event-type {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 2px;
+}
+
+.no-events {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  padding: 12px 0;
+}
+
+/* Close button */
+.calendar-modal .fc-popover-close {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+}
+
+.calendar-modal .fc-popover-close:hover {
+  color: #f0a500;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .calendar-modal {
+    max-width: 95%;
+  }
+
+  .event-title {
+    font-size: 0.8rem;
+  }
+
+  .event-type {
+    font-size: 0.65rem;
+  }
+}
+
+/* =========================================
+   FORCE FullCalendar popover CENTERED
+========================================= */
+
+.fc-daygrid-more-link {
+  display: none !important;
+}
+/* Header styling */
+.fc-popover-header {
+  background: rgba(240, 165, 0, 0.15) !important;
+  color: #e8c96a !important;
+  font-weight: 700;
+  padding: 0.6rem !important;
+  font-family: 'Montserrat','DM Mono', monospace;
+  font-size: 0.8rem;
+}
+
+/* Close button */
+.fc-popover-close {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 1.2rem !important;
+}
+
+.fc-popover-close:hover {
+  color: #f0a500 !important;
+}
+
+/* Body */
+.fc-popover-body {
+  padding: 0.8rem !important;
+}
+
+/* Animation */
+@keyframes popIn {
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Lock scroll when popover exists (modern browsers) */
+body:has(.fc-popover) {
+  overflow: hidden;
+}

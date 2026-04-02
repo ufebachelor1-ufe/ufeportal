@@ -1,0 +1,40 @@
+:root {
+  --swiper-navigation-size: 20px;
+}
+
+/* Clean dots */
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #cbd5e1;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #0132a6;
+}
+
+.swiper-button-prev{
+  color: #0132a6;
+}
+
+.swiper-button-next{
+  color: #0132a6;
+}
+
+/* 🔥 Hide dots on mobile */
+@media (max-width: 640px) {
+  .swiper-pagination {
+    display: none;
+  }
+}
+
+/* Hide arrows on mobile */
+@media (max-width: 768px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+}
+
+
