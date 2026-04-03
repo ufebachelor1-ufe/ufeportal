@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { supabase } from "../supabase";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { supabase2 } from "../supabase2";
+import { supabase3 } from "../supabase3";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FaFilePdf, FaVideo, FaGlobe } from "react-icons/fa";
@@ -34,7 +35,6 @@ const styles = `
     border: 2.5px solid #1a3a6b;
   }
 
-  /* ── Header ── */
   .pd-header {
     background: linear-gradient(135deg, #1a3a6b 0%, #1e4fa0 100%);
     padding: 28px 32px 20px;
@@ -58,9 +58,7 @@ const styles = `
     padding: 6px 10px;
   }
 
-  .pd-header-title {
-    color: #fff;
-  }
+  .pd-header-title { color: #fff; }
 
   .pd-univ-name-en {
     font-size: 13px;
@@ -85,7 +83,6 @@ const styles = `
     flex-shrink: 0;
   }
 
-  /* ── Program Badge ── */
   .pd-program-badge {
     background: #f7c948;
     color: #1a3a6b;
@@ -97,7 +94,6 @@ const styles = `
     border-bottom: 2.5px solid #1a3a6b;
   }
 
-  /* ── Body ── */
   .pd-body {
     padding: 24px 28px;
     display: flex;
@@ -105,7 +101,6 @@ const styles = `
     gap: 18px;
   }
 
-  /* ── Two Column intro block ── */
   .pd-intro-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -127,7 +122,6 @@ const styles = `
     border: 2px solid #e2e8f0;
   }
 
-  /* ── Section Box ── */
   .pd-section {
     border: 2px solid #1a3a6b;
     border-radius: 14px;
@@ -165,11 +159,8 @@ const styles = `
     min-width: 120px;
   }
 
-  .pd-value {
-    color: #2d3748;
-  }
+  .pd-value { color: #2d3748; }
 
-  /* Requirements list */
   .pd-list {
     margin: 0;
     padding-left: 18px;
@@ -178,7 +169,6 @@ const styles = `
     line-height: 1.7;
   }
 
-  /* ── Two-column section grid ── */
   .pd-two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -189,7 +179,6 @@ const styles = `
     .pd-two-col { grid-template-columns: 1fr; }
   }
 
-  /* ── Scholarship highlight ── */
   .pd-scholarship {
     background: #fff8e1;
     border: 2px solid #f7c948;
@@ -201,11 +190,8 @@ const styles = `
     color: #7a5200;
   }
 
-  .pd-scholarship span {
-    color: #1a3a6b;
-  }
+  .pd-scholarship span { color: #1a3a6b; }
 
-  /* ── Media Buttons ── */
   .pd-media-row {
     display: flex;
     gap: 10px;
@@ -227,12 +213,10 @@ const styles = `
   }
 
   .pd-btn:hover { opacity: 0.85; transform: translateY(-1px); }
-
   .pd-btn-blue  { background: #1a3a6b; color: #fff; }
   .pd-btn-red   { background: #c0392b; color: #fff; }
   .pd-btn-green { background: #27ae60; color: #fff; }
 
-  /* ── Website Footer Banner ── */
   .pd-footer-banner {
     background: #1a3a6b;
     display: flex;
@@ -268,7 +252,6 @@ const styles = `
     padding: 4px 8px;
   }
 
-  /* ── Testimonial ── */
   .pd-testimonial {
     background: #f0f4f8;
     border-left: 4px solid #1a3a6b;
@@ -279,11 +262,9 @@ const styles = `
     color: #444;
   }
 
-  /* ── Carousel ── */
   .pd-carousel { border-radius: 12px; overflow: hidden; }
   .pd-carousel img { width: 100%; height: 300px; object-fit: cover; }
 
-  /* ── Back button ── */
   .pd-back {
     max-width: 860px;
     margin: 0 auto 12px;
@@ -302,7 +283,6 @@ const styles = `
 
   .pd-back button:hover { text-decoration: underline; }
 
-  /* Video embed */
   .pd-video {
     border-radius: 12px;
     overflow: hidden;
@@ -313,38 +293,106 @@ const styles = `
   .pd-video iframe { width: 100%; height: 100%; border: none; }
 `;
 
+// Map programs_international columns → unified shape used in the template
+function normaliseInternational(raw) {
+  const images = Array.isArray(raw.city_images) ? raw.city_images : [];
+  return {
+    university_logo:      raw.university_logo_image,
+    university_name:      raw.university_name,
+    program_type:         raw.degree,
+    majors:               raw.majors,
+    study_language:       raw.study_language,
+    country:              raw.country,
+    city:                 raw.city,
+    founded_year:         raw.founded_year,
+    population:           raw.population,
+    world_ranking:        raw.world_ranking,
+    staff_student_info:   raw.staff_student_info,
+    transfer_requirements: raw.transfer_requirements,
+    admission_process:    raw.admission_process,
+    tuition_info:         raw.tuition_info,
+    dorm_info:            raw.dorm_info,
+    health_insurance:     raw.health_insurance,
+    study_duration:       raw.study_duration,
+    location:             raw.location,
+    climate:              raw.climate,
+    continent:            raw.continent,
+    scholarship:          raw.scholarship,
+    brochure:             raw.brochure,
+    reel:                 raw.reel_video,   // reel_video in programs_international
+    university_link:      raw.university_link,
+    video_link:           raw.video_link,
+    testimonial:          raw.testimonial,
+    flag_image:           raw.flag_image,
+    _images:              images,
+  };
+}
+
 export default function ProgramDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [university, setUniversity] = useState(null);
+  const location = useLocation();
+  const isInternational = location.state?.isInternational ?? false;
+
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchUniversity = async () => {
+    const fetchData = async () => {
       try {
-        const { data, error } = await supabase
-          .from("universities")
-          .select("*")
-          .eq("id", id)
-          .single();
-        if (error) throw error;
-        setUniversity(data);
+        let result;
+
+        if (isInternational) {
+          // programs_international table via supabase2
+          const { data: raw, error } = await supabase3
+            .from("program_international")
+            .select("*")
+            .eq("id", id)
+            .single();
+          if (error) throw error;
+          result = normaliseInternational(raw);
+        } else {
+          // original: universities table via supabase3
+          const { data: raw, error } = await supabase2
+            .from("programs")
+            .select("*")
+            .eq("id", id)
+            .single();
+          if (error) throw error;
+          result = {
+            ...raw,
+            _images: raw.city_images
+              ? raw.city_images.split(",").map((s) => s.trim()).filter(Boolean)
+              : [],
+          };
+        }
+
+        setData(result);
       } catch (err) {
         console.error(err);
       } finally {
         setLoading(false);
       }
     };
-    fetchUniversity();
-  }, [id]);
+
+    fetchData();
+  }, [id, isInternational]);
 
   if (loading)
     return <p style={{ marginTop: 80, textAlign: "center", fontSize: 18 }}>Ачааллаж байна...</p>;
-  if (!university)
-    return <p style={{ marginTop: 80, textAlign: "center", color: "red" }}>Сургууль олдсонгүй.</p>;
+  if (!data)
+    return <p style={{ marginTop: 80, textAlign: "center", color: "red" }}>Мэдээлэл олдсонгүй.</p>;
 
-  const images = university.city_images?.split(",").map((s) => s.trim()).filter(Boolean) || [];
+  const images = data._images || [];
   const openLink = (url) => url && window.open(url, "_blank");
+
+  const requirementsList = data.transfer_requirements
+    ? data.transfer_requirements.split(/\n|;/).map((s) => s.trim()).filter(Boolean)
+    : [];
+
+  const admissionList = data.admission_process
+    ? data.admission_process.split(/\n|;/).map((s) => s.trim()).filter(Boolean)
+    : [];
 
   const InfoRow = ({ label, value }) =>
     value ? (
@@ -361,15 +409,6 @@ export default function ProgramDetail() {
     </div>
   );
 
-  // Parse transfer requirements as a numbered list if it contains newlines or semicolons
-  const requirementsList = university.transfer_requirements
-    ? university.transfer_requirements.split(/\n|;/).map((s) => s.trim()).filter(Boolean)
-    : [];
-
-  const admissionList = university.admission_process
-    ? university.admission_process.split(/\n|;/).map((s) => s.trim()).filter(Boolean)
-    : [];
-
   return (
     <>
       <style>{styles}</style>
@@ -382,70 +421,67 @@ export default function ProgramDetail() {
           {/* ── Header ── */}
           <div className="pd-header">
             <div className="pd-header-left">
-              {university.university_logo && (
-                <img src={university.university_logo} alt="logo" className="pd-logo" />
+              {data.university_logo && (
+                <img src={data.university_logo} alt="logo" className="pd-logo" />
               )}
               <div className="pd-header-title">
-                <div className="pd-univ-name-en">{university.university_name}</div>
+                <div className="pd-univ-name-en">{data.university_name}</div>
               </div>
             </div>
+            {data.flag_image && (
+              <img src={data.flag_image} alt="flag" className="pd-country-flag" />
+            )}
           </div>
 
           {/* ── Program Badge ── */}
-          {university.program_type && (
-            <div className="pd-program-badge">{university.program_type}</div>
+          {data.program_type && (
+            <div className="pd-program-badge">{data.program_type}</div>
           )}
 
           {/* ── Body ── */}
           <div className="pd-body">
 
-            {/* Intro: text left, campus image right */}
+            {/* Intro */}
             <div className="pd-intro-row">
               <div>
-                {university.majors && (
+                {data.majors && (
                   <div style={{ marginBottom: 10 }}>
                     <span className="pd-label" style={{ display: "block", marginBottom: 2 }}>Мэргэжил:</span>
-                    <span className="pd-value" style={{ fontWeight: 600 }}>{university.majors}</span>
+                    <span className="pd-value" style={{ fontWeight: 600 }}>{data.majors}</span>
                   </div>
                 )}
-                <InfoRow label="Суралцах хэл" value={university.study_language} />
-                <InfoRow label="Улс" value={university.country} />
-                <InfoRow label="Хот" value={university.city} />
-                <InfoRow label="Үүссэн он" value={university.founded_year} />
-                <InfoRow label="Хүн ам" value={university.population} />
-                <InfoRow label="Дэлхийн зэрэглэл" value={university.world_ranking} />
-                <InfoRow label="Нийт оюутан" value={university.staff_student_info} />
+                <InfoRow label="Суралцах хэл"     value={data.study_language} />
+                <InfoRow label="Улс"               value={data.country} />
+                <InfoRow label="Хот"               value={data.city} />
+                <InfoRow label="Үүссэн он"         value={data.founded_year} />
+                <InfoRow label="Хүн ам"            value={data.population} />
+                <InfoRow label="Дэлхийн зэрэглэл"  value={data.world_ranking} />
+                <InfoRow label="Нийт оюутан"       value={data.staff_student_info} />
               </div>
               {images[0] && (
                 <img src={images[0]} alt="campus" className="pd-intro-image" />
               )}
             </div>
 
-            {/* Two-column: admission requirements & admission process */}
+            {/* Requirements & Fees */}
             <div className="pd-two-col">
               {requirementsList.length > 0 && (
                 <Section title="Шилжих суралцах шаардлага">
                   <ol className="pd-list">
-                    {requirementsList.map((req, i) => (
-                      <li key={i}>{req}</li>
-                    ))}
+                    {requirementsList.map((req, i) => <li key={i}>{req}</li>)}
                   </ol>
                 </Section>
               )}
-
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                 <Section title="Сургалтын болон байрны мэдээлэл">
-                  <InfoRow label="Сургалтын төлбөр" value={university.tuition_info} />
-                  <InfoRow label="Оюутны байр" value={university.dorm_info} />
-                  <InfoRow label="Даатгал" value={university.health_insurance} />
+                  <InfoRow label="Сургалтын төлбөр" value={data.tuition_info} />
+                  <InfoRow label="Оюутны байр"      value={data.dorm_info} />
+                  <InfoRow label="Даатгал"           value={data.health_insurance} />
                 </Section>
-
                 {admissionList.length > 0 && (
                   <Section title="Элсэлтийн үйл явц">
                     <ol className="pd-list">
-                      {admissionList.map((step, i) => (
-                        <li key={i}>{step}</li>
-                      ))}
+                      {admissionList.map((step, i) => <li key={i}>{step}</li>)}
                     </ol>
                   </Section>
                 )}
@@ -455,53 +491,53 @@ export default function ProgramDetail() {
             {/* Academic */}
             <Section title="Академик мэдээлэл">
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px 24px" }}>
-                <InfoRow label="Сургалтын хугацаа" value={university.study_duration} />
-                <InfoRow label="Байршил" value={university.location} />
-                <InfoRow label="Цаг уур" value={university.climate} />
-                <InfoRow label="Континент" value={university.continent} />
+                <InfoRow label="Сургалтын хугацаа" value={data.study_duration} />
+                <InfoRow label="Байршил"            value={data.location} />
+                <InfoRow label="Цаг уур"            value={data.climate} />
+                <InfoRow label="Континент"          value={data.continent} />
               </div>
             </Section>
 
-            {/* Scholarship highlight */}
-            {university.scholarship && (
+            {/* Scholarship */}
+            {data.scholarship && (
               <div className="pd-scholarship">
-                Тэтгэлэг: <span>{university.scholarship}</span>
+                Тэтгэлэг: <span>{data.scholarship}</span>
               </div>
             )}
 
             {/* Media buttons */}
-            {(university.brochure || university.reel || university.university_link) && (
+            {(data.brochure || data.reel || data.university_link) && (
               <div className="pd-media-row">
-                {university.brochure && (
-                  <button className="pd-btn pd-btn-red" onClick={() => openLink(university.brochure)}>
+                {data.brochure && (
+                  <button className="pd-btn pd-btn-red" onClick={() => openLink(data.brochure)}>
                     <FaFilePdf /> Брошюр үзэх
                   </button>
                 )}
-                {university.reel && (
-                  <button className="pd-btn pd-btn-blue" onClick={() => openLink(university.reel)}>
+                {data.reel && (
+                  <button className="pd-btn pd-btn-blue" onClick={() => openLink(data.reel)}>
                     <FaVideo /> Reel үзэх
                   </button>
                 )}
-                {university.university_link && (
-                  <button className="pd-btn pd-btn-green" onClick={() => openLink(university.university_link)}>
+                {data.university_link && (
+                  <button className="pd-btn pd-btn-green" onClick={() => openLink(data.university_link)}>
                     <FaGlobe /> Сургуулийн вэб
                   </button>
                 )}
               </div>
             )}
 
-            {/* Embedded video */}
-            {university.video_link && (
+            {/* Video */}
+            {data.video_link && (
               <div className="pd-video">
                 <iframe
-                  src={getEmbedLink(university.video_link)}
+                  src={getEmbedLink(data.video_link)}
                   allowFullScreen
                   title="University Video"
                 />
               </div>
             )}
 
-            {/* City image carousel (skip first image already used) */}
+            {/* Carousel */}
             {images.length > 1 && (
               <div className="pd-carousel">
                 <Swiper modules={[Navigation]} navigation slidesPerView={1}>
@@ -515,27 +551,27 @@ export default function ProgramDetail() {
             )}
 
             {/* Testimonials */}
-            {university.testimonial && (
+            {data.testimonial && (
               <Section title="Оюутнуудын сэтгэгдэл">
-                <div className="pd-testimonial">"{university.testimonial}"</div>
+                <div className="pd-testimonial">"{data.testimonial}"</div>
               </Section>
             )}
           </div>
 
-          {/* ── Footer Website Banner ── */}
-          {university.university_link && (
+          {/* ── Footer ── */}
+          {data.university_link && (
             <div className="pd-footer-banner">
               <span className="pd-footer-label">Сургуулийн вэбсайт:</span>
               <a
-                href={university.university_link}
+                href={data.university_link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="pd-footer-link"
               >
-                {university.university_link}
+                {data.university_link}
               </a>
-              {university.university_logo && (
-                <img src={university.university_logo} alt="logo" className="pd-footer-logo" />
+              {data.university_logo && (
+                <img src={data.university_logo} alt="logo" className="pd-footer-logo" />
               )}
             </div>
           )}

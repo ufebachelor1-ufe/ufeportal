@@ -37,16 +37,16 @@ const MainLayout = ({ children }) => {
     {
       label: "Хөтөлбөр",
       link: "/programs",
-      //items: [
-      //  { name: "Үндсэн", link: "/programs/degree/Үндсэн" },
-      //  { name: "Хамтарсан", link: "/programs/degree/Хамтарсан" },
-      //  { name: "BTEC", link: "/programs/degree/BTEC" },
-      //  { name: "Rotation", link: "/programs/degree/Rotation" },
-      //  { name: "Интерактив", link: "/programs/degree/Интерактив" },
-      //  { name: "АССА, CGMA", link: "/programs/degree/ACCA, CGMA" },
-      // { name: "Цагийн", link: "/programs/degree/Цагийн" },
-      //  { name: "Globe view", link: "/globe" },
-      //],
+      items: [
+        { name: "Үндсэн", link: "/programs/degree/Үндсэн" },
+        { name: "Хамтарсан", link: "/programs/degree/Хамтарсан" },
+        { name: "BTEC", link: "/programs/degree/BTEC" },
+        { name: "Rotation", link: "/programs/degree/Rotation" },
+        { name: "Интерактив", link: "/programs/degree/Интерактив" },
+        { name: "АССА, CGMA", link: "/programs/degree/ACCA, CGMA" },
+       { name: "Цагийн", link: "/programs/degree/Цагийн" },
+        { name: "Globe view", link: "/globe" },
+      ],
     },
     {
       label: "Сургалтын Алба",
