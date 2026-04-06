@@ -36,7 +36,7 @@ const MainLayout = ({ children }) => {
     { label: "Нүүр ", link: "/" },
     {
       label: "Хөтөлбөр",
-      link: "/programs",
+      link: "/globe",
       items: [
         { name: "Үндсэн", link: "/programs/degree/Үндсэн" },
         { name: "Хамтарсан", link: "/programs/degree/Хамтарсан" },
