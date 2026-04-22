@@ -18,7 +18,8 @@ export default function Staff() {
       const { data, error } = await supabase
         .from("staff")
         .select("id, full_name, position, department, bio, image_url, email")
-        .eq("is_active", true);
+        .eq("is_active", true)
+        .order("order", { ascending: true });
 
       if (!error && data) {
         const positionOrder = [
