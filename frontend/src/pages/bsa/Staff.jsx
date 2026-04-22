@@ -22,23 +22,7 @@ export default function Staff() {
         .order("order", { ascending: true });
 
       if (!error && data) {
-        const positionOrder = [
-          "Бакалаврын сургалтын албаны дарга",
-          "Бакалаврын сургалтын албаны орлогч дарга",
-          "Сургалтын менежер",
-          "Ахлах мэргэжилтэн",
-          "Мэргэжилтэн",
-          "Зохицуулагч",
-          "Дадлагажигч",
-        ];
-
-        setStaff(
-          data.sort(
-            (a, b) =>
-              positionOrder.indexOf(a.position) -
-              positionOrder.indexOf(b.position)
-          )
-        );
+        setStaff(data);
       }
     };
 
