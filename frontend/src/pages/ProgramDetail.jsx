@@ -332,9 +332,13 @@ export default function ProgramDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
+  
+  const searchParams = new URLSearchParams(location.search);
+  const typeParam = searchParams.get("type");
+  
   const [isInternational, setIsInternational] = useState(
-    location.state?.isInternational ?? null
-  );;
+    typeParam === "intl" ? true : typeParam === "regular" ? false : location.state?.isInternational ?? null
+  );
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);

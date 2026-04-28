@@ -292,7 +292,7 @@ export default function ProgramsPage() {
               {normalised.map((p) => (
                 <Link
                   key={p.id}
-                  to={`/programs/id/${p.id}`}
+                  to={`/programs/id/${p.id}?type=${isInternational ? "intl" : "regular"}`}
                   state={{ degree, isInternational }}
                   className="group relative flex flex-col overflow-hidden bg-white rounded-xl border-2 border-gray-200 hover:border-third hover:shadow-xl transition-all duration-300"
                 >
