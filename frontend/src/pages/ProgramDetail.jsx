@@ -332,51 +332,59 @@ export default function ProgramDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const isInternational = location.state?.isInternational ?? false;
+  const [isInternational, setIsInternational] = useState(
+    location.state?.isInternational ?? null
+  );;
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let result;
-
-        if (isInternational) {
-          // programs_international table via supabase2
-          const { data: raw, error } = await supabase3
-            .from("program_international")
-            .select("*")
-            .eq("id", id)
-            .single();
-          if (error) throw error;
-          result = normaliseInternational(raw);
-        } else {
-          // original: universities table via supabase3
-          const { data: raw, error } = await supabase2
-            .from("programs")
-            .select("*")
-            .eq("id", id)
-            .single();
-          if (error) throw error;
-          result = {
-            ...raw,
-            _images: raw.city_images
-              ? raw.city_images.split(",").map((s) => s.trim()).filter(Boolean)
-              : [],
-          };
-        }
-
-        setData(result);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      // If we know which table, fetch directly
+      if (isInternational === true) {
+        const { data: raw, error } = await supabase3
+          .from("program_international").select("*").eq("id", id).single();
+        if (error) throw error;
+        setData(normaliseInternational(raw));
+        return;
       }
-    };
 
-    fetchData();
-  }, [id, isInternational]);
+      if (isInternational === false) {
+        const { data: raw, error } = await supabase2
+          .from("programs").select("*").eq("id", id).single();
+        if (error) throw error;
+        setData({ ...raw, _images: raw.city_images
+          ? raw.city_images.split(",").map(s => s.trim()).filter(Boolean) : [] });
+        return;
+      }
+
+      // isInternational is null (direct URL) — try both tables
+      const { data: intl } = await supabase3
+        .from("program_international").select("*").eq("id", id).single();
+      if (intl) {
+        setIsInternational(true);
+        setData(normaliseInternational(intl));
+        return;
+      }
+
+      const { data: regular } = await supabase2
+        .from("programs").select("*").eq("id", id).single();
+      if (regular) {
+        setIsInternational(false);
+        setData({ ...regular, _images: regular.city_images
+          ? regular.city_images.split(",").map(s => s.trim()).filter(Boolean) : [] });
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchData();
+}, [id, isInternational]);
 
   if (loading)
     return <p style={{ marginTop: 80, textAlign: "center", fontSize: 18 }}>Ачааллаж байна...</p>;
