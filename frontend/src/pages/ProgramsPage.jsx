@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { supabase3 } from "../supabase3";
 import { supabase2 } from "../supabase2";
 import { FaUniversity, FaMapMarkerAlt, FaClock, FaGlobe } from "react-icons/fa";
 

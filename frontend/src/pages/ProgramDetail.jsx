@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { supabase2 } from "../supabase2";
-import { supabase3 } from "../supabase3";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FaFilePdf, FaVideo, FaGlobe } from "react-icons/fa";
