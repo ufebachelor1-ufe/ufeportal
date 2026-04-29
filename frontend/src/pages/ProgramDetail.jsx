@@ -294,37 +294,37 @@ const styles = `
 `;
 
 // Map programs_international columns → unified shape used in the template
-function normaliseInternational(raw) {
-  const images = Array.isArray(raw.city_images) ? raw.city_images : [];
+function normaliseRegular(raw) {
   return {
-    university_logo:      raw.university_logo_image,
-    university_name:      raw.university_name,
-    program_type:         raw.degree,
-    majors:               raw.majors,
-    study_language:       raw.study_language,
-    country:              raw.country,
-    city:                 raw.city,
-    founded_year:         raw.founded_year,
-    population:           raw.population,
-    world_ranking:        raw.world_ranking,
-    staff_student_info:   raw.staff_student_info,
-    transfer_requirements: raw.transfer_requirements,
-    admission_process:    raw.admission_process,
-    tuition_info:         raw.tuition_info,
-    dorm_info:            raw.dorm_info,
-    health_insurance:     raw.health_insurance,
-    study_duration:       raw.study_duration,
-    location:             raw.location,
-    climate:              raw.climate,
-    continent:            raw.continent,
-    scholarship:          raw.scholarship,
-    brochure:             raw.brochure,
-    reel:                 raw.reel_video,   // reel_video in programs_international
-    university_link:      raw.university_link,
-    video_link:           raw.video_link,
-    testimonial:          raw.testimonial,
-    flag_image:           raw.flag_image,
-    _images:              images,
+    university_logo:       raw.university_logo ?? null,
+    university_name:       raw.university,
+    program_type:          raw.degree,
+    majors:                raw.major,
+    study_language:        raw.lang,
+    country:               raw.country,
+    city:                  raw.city,
+    study_duration:        raw.duration,
+    tuition_info:          raw.tuition,
+    description:           raw.description,
+    video_link:            raw.video_url,
+    flag_image:            raw.flag_image ?? null,
+    university_link:       raw.university_link ?? null,
+    brochure:              raw.brochure ?? null,
+    reel:                  raw.reel ?? null,
+    scholarship:           raw.scholarship ?? null,
+    testimonial:           raw.testimonial ?? null,
+    transfer_requirements: raw.transfer_requirements ?? null,
+    admission_process:     raw.admission_process ?? null,
+    founded_year:          raw.founded_year ?? null,
+    population:            raw.population ?? null,
+    world_ranking:         raw.world_ranking ?? null,
+    staff_student_info:    raw.staff_student_info ?? null,
+    dorm_info:             raw.dorm_info ?? null,
+    health_insurance:      raw.health_insurance ?? null,
+    location:              raw.location ?? null,
+    climate:               raw.climate ?? null,
+    continent:             raw.continent ?? null,
+    _images:               raw.img_url ? [raw.img_url] : [],
   };
 }
 
@@ -359,8 +359,7 @@ useEffect(() => {
         const { data: raw, error } = await supabase2
           .from("programs").select("*").eq("id", id).single();
         if (error) throw error;
-        setData({ ...raw, _images: raw.city_images
-          ? raw.city_images.split(",").map(s => s.trim()).filter(Boolean) : [] });
+          setData(normaliseRegular(raw));
         return;
       }
 
