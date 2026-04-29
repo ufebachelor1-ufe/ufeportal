@@ -397,13 +397,13 @@ const HomePage = () => {
       {/* News, Calendar & Announcements Grid */}
       <section className="px-4 py-8 sm:px-6 bg-gray-50">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,2.5fr)_minmax(0,5fr)_minmax(0,2.5fr)] gap-6 max-w-[1920px] mx-auto">
-          <div className="min-w-0">
+          <div className="min-w-0 h-full">
             <NewsPage />
           </div>
-          <div className="min-w-0">
+          <div className="min-w-0 h-full">
             <Calendar isHomePage={true}/>
           </div>
-          <div className="flex flex-col min-w-0 gap-4">
+          <div className="flex flex-col min-w-0 gap-4 h-full">
             <Announcements />
             <Vid />
           </div>
