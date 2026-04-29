@@ -103,7 +103,7 @@ export default function Req() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-primary text-sm">Явцыг хянах</h4>
-                    <p className="text-sm text-gray-600 mt-0.5">Teams → Approvals апп → Received</p>
+                    <p className="text-sm text-gray-600 mt-0.5">Teams → Approvals апп → Sent</p>
                   </div>
                 </div>
               </div>
