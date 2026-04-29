@@ -9,16 +9,23 @@ const COUNTRY_NAME_MAP = {
   "Монгол улс": "Mongolia",
   "ОХУ": "Russia",
   "Япон": "Japan",
+  "Япон улс": "Japan",
   "БНСУ": "South Korea",
   "БНХАУ": "China",
   "АНУ": "United States",
   "Герман": "Germany",
   "Австрали": "Australia",
   "Канад улс": "Canada",
-  "Япон улс": "Japan",
   "Финланд улс": "Finland",
   "Швейцар улс": "Switzerland",
   "Тайвань улс": "Taiwan",
+  "Канад": "Canada",
+  "Солонгос": "South Korea",
+  "Хятад": "China",
+  "Тайвань": "Taiwan",
+  "Финланд": "Finland",
+  "Швейцарь": "Switzerland",
+  "Их Британи": "United Kingdom",
 };
 
 const COUNTRY_COORDS = {
@@ -34,6 +41,7 @@ const COUNTRY_COORDS = {
   Finland: { lat: 61.92, lng: 25.75 },
   Switzerland: { lat: 46.82, lng: 8.23 },
   Taiwan: { lat: 23.7, lng: 121.0 },
+  "United Kingdom": { lat: 55.38, lng: -3.44 },
 };
 
 const FLAG_CODES = {
@@ -49,6 +57,7 @@ const FLAG_CODES = {
   Finland: "fi",
   Switzerland: "ch",
   Taiwan: "tw",
+  "United Kingdom": "gb",
 };
 
 const getFlagCode = (country) => FLAG_CODES[country] || "un";
@@ -163,7 +172,7 @@ export default function ProgramsGlobePage() {
   useEffect(() => {
     const fetchPrograms = async () => {
       try {
-        const { data, error } = await supabase2.from("programs").select("*");
+        const { data, error } = await supabase2.from("program_international").select("*");
         if (error) throw error;
         setPrograms(data || []);
         const initialFiltered = (data || []).filter(

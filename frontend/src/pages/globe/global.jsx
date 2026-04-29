@@ -126,14 +126,13 @@ export default function ProgramsGlobePage() {
         const { data, error } = await supabase2.from("program_international").select("*");
         if (error) throw error;
 
-        // ✅ Trim whitespace from country values
         const normalized = (data || []).map((p) => ({
           ...p,
           country: p.country?.trim() ?? "",
         }));
 
         setPrograms(normalized);
-        setFilteredPrograms(normalized); // ✅ Show all by default
+        setFilteredPrograms(normalized);
 
         const countryCountMap = {};
         normalized.forEach((p) => {
