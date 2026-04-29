@@ -293,6 +293,40 @@ const styles = `
   .pd-video iframe { width: 100%; height: 100%; border: none; }
 `;
 
+function normaliseInternational(raw) {
+  const images = Array.isArray(raw.city_images) ? raw.city_images : [];
+  return {
+    university_logo:       raw.university_logo_image,
+    university_name:       raw.university_name,
+    program_type:          raw.degree,
+    majors:                raw.majors,
+    study_language:        raw.study_language,
+    country:               raw.country,
+    city:                  raw.city,
+    founded_year:          raw.founded_year,
+    population:            raw.population,
+    world_ranking:         raw.world_ranking,
+    staff_student_info:    raw.staff_student_info,
+    transfer_requirements: raw.transfer_requirements,
+    admission_process:     raw.admission_process,
+    tuition_info:          raw.tuition_info,
+    dorm_info:             raw.dorm_info,
+    health_insurance:      raw.health_insurance,
+    study_duration:        raw.study_duration,
+    location:              raw.location,
+    climate:               raw.climate,
+    continent:             raw.continent,
+    scholarship:           raw.scholarship,
+    brochure:              raw.brochure,
+    reel:                  raw.reel_video,
+    university_link:       raw.university_link,
+    video_link:            raw.video_link,
+    testimonial:           raw.testimonial,
+    flag_image:            raw.flag_image,
+    _images:               images,
+  };
+}
+
 // Map programs_international columns → unified shape used in the template
 function normaliseRegular(raw) {
   return {
@@ -573,7 +607,7 @@ useEffect(() => {
           {data.university_link && (
             <div className="pd-footer-banner">
               <span className="pd-footer-label">Сургуулийн вэбсайт:</span>
-              <a
+              <a              
                 href={data.university_link}
                 target="_blank"
                 rel="noopener noreferrer"
