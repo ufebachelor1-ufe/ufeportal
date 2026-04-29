@@ -20,7 +20,7 @@ export default function ProgramsPage() {
 
         if (isInternational) {
           // program_international table — different columns
-          ({ data, error } = await supabase3
+          ({ data, error } = await supabase2
             .from("program_international")
             .select(`
               id,

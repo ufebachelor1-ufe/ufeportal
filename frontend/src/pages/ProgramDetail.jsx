@@ -381,7 +381,7 @@ useEffect(() => {
     try {
       // If we know which table, fetch directly
       if (isInternational === true) {
-        const { data: raw, error } = await supabase3
+        const { data: raw, error } = await supabase2
           .from("program_international").select("*").eq("id", id).single();
         if (error) throw error;
         setData(normaliseInternational(raw));
@@ -397,7 +397,7 @@ useEffect(() => {
       }
 
       // isInternational is null (direct URL) — try both tables
-      const { data: intl } = await supabase3
+      const { data: intl } = await supabase2
         .from("program_international").select("*").eq("id", id).single();
       if (intl) {
         setIsInternational(true);
