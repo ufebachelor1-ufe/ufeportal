@@ -165,7 +165,7 @@ export default function ProgramsGlobePage() {
   useEffect(() => {
     const fetchPrograms = async () => {
       try {
-        const { data, error } = await supabase2.from("programs").select("*");
+        const { data, error } = await supabase2.from("program_international").select("*");
         if (error) throw error;
         setPrograms(data || []);
         const initialFiltered = (data || []).filter(
