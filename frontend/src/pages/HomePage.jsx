@@ -250,7 +250,7 @@ const HomePage = () => {
 
               {/* CENTER - Large Globe */}
               <Link
-                to="/programs"
+                to="/programs/degree/Хамтарсан"
                 className="row-span-2 group relative rounded-3xl overflow-hidden border-2 border-third/30 hover:border-third shadow-2xl bg-gradient-to-br from-[rgba(79,134,198,0.15)] to-[rgba(15,37,64,0.6)] transition-all duration-300 hover:shadow-3xl cursor-pointer min-h-[550px] lg:min-h-[550px]"
               >
                 <div className="absolute z-10 px-4 py-2 rounded-full shadow-lg top-6 right-6 bg-gradient-to-r from-third to-third/90">

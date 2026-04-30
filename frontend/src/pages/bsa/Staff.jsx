@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { supabase } from "../../supabase";
+import { supabase1 } from "../../supabase1";
 
 export default function Staff() {
   const [staff, setStaff] = useState([]);
@@ -15,7 +15,7 @@ export default function Staff() {
 
   useEffect(() => {
     const fetchStaff = async () => {
-      const { data, error } = await supabase
+      const { data, error } = await supabase1
         .from("staff")
         .select("id, full_name, position, department, bio, image_url, email")
         .eq("is_active", true)

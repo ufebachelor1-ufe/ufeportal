@@ -54,7 +54,7 @@ export default function EnhancedNews() {
   return (
     <div className="p-4 border rounded-lg bg-primary border-third/20 backdrop-blur-sm" style={{ minHeight: '550px' }}>
       {/* Header */}
-      <div className="flex items-center justify-between mb-3"> 
+      <div className="flex items-center justify-between mb-4"> 
         <div className="flex items-center flex-1 gap-2">
           <h2 className="text-sm font-bold tracking-[0.1em] uppercase text-third">
             Шинэ мэдээ
@@ -64,7 +64,7 @@ export default function EnhancedNews() {
         
         <Link 
           to="/newsall"
-          className="ml-2 px-3 py-1.5 text-xs font-bold text-primary bg-third rounded transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 uppercase tracking-wider whitespace-nowrap"
+          className="ml-2 px-3 py-2 text-xs font-bold text-primary bg-third rounded transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 uppercase tracking-wider whitespace-nowrap"
         >
           Бүгдийг үзэх →
         </Link>
@@ -72,7 +72,7 @@ export default function EnhancedNews() {
 
       {/* Featured News Carousel */}
       {featuredPosts.length > 0 && (
-        <div className="relative mb-3 overflow-hidden rounded-lg group" style={{ height: '200px' }}>
+        <div className="relative mb-4 overflow-hidden rounded-lg group" style={{ height: '200px' }}>
           {featuredPosts.map((post, index) => (
             <Link
               key={post.id}
@@ -153,7 +153,7 @@ export default function EnhancedNews() {
       )}
       
       {/* News Grid - 2 columns */}
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {listPosts.map((post, index) => (
           <Link
             key={post.id}

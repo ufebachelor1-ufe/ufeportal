@@ -146,11 +146,10 @@ export default function Req() {
                     <span className="text-primary font-bold text-sm">3</span>
                   </div>
                   <div>
-                    <h5 className="font-semibold text-gray-800 text-sm">"Received" хэсэг нээх</h5>
+                    <h5 className="font-semibold text-gray-800 text-sm">"Sent" хэсэг нээх</h5>
                     <div className="mt-1.5 flex flex-wrap gap-1.5">
-                      <span className="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-semibold rounded-full">Received</span>
-                      <span className="px-2 py-0.5 bg-gray-100 text-gray-600 text-[10px] rounded-full">Sent</span>
-                      <span className="px-2 py-0.5 bg-gray-100 text-gray-600 text-[10px] rounded-full">History</span>
+                      <span className="px-2 py-0.5 bg-gray-100 text-gray-600 text-[10px] rounded-full">Received</span>
+                      <span className="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-semibold rounded-full">Sent</span>
                     </div>
                   </div>
                 </div>

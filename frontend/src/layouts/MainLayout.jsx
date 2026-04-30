@@ -38,7 +38,7 @@ const MainLayout = ({ children }) => {
       label: "Хөтөлбөр",
       link: "/globe",
       items: [
-        { name: "Үндсэн", link: "/programs/degree/Үндсэн" },
+        { name: "", link: "/programs/degree/Үндсэн" },
         { name: "Хамтарсан", link: "/programs/degree/Хамтарсан" },
         { name: "BTEC", link: "/programs/degree/BTEC" },
         { name: "Rotation", link: "/programs/degree/Rotation" },
