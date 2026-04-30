@@ -510,7 +510,7 @@ useEffect(() => {
             {/* Requirements & Fees */}
             <div className="pd-two-col">
               {requirementsList.length > 0 && (
-                <Section title="Шилжих суралцах шаардлага">
+                <Section title="Шилжин суралцах шаардлага">
                   <ol className="pd-list">
                     {requirementsList.map((req, i) => <li key={i}>{req}</li>)}
                   </ol>
