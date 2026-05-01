@@ -89,7 +89,7 @@ export default function Dropdown({ label, items, link }) {
                       </span>
                     )}
 
-                    <span className={isGlobe ? "font-bold" : "font-medium"}>
+                    <span className={`${isGlobe ? "font-bold" : "font-medium"} font-sans text-white/80`}>
                       {item.name}
                     </span>
 
