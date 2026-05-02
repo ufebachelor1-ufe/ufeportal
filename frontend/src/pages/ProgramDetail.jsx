@@ -3,7 +3,7 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { supabase2 } from "../supabase2";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { FaFilePdf, FaVideo, FaGlobe } from "react-icons/fa";
+import { FaFilePdf, FaVideo, FaGlobe, FaLayerGroup, FaMoneyBillWave } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -290,6 +290,36 @@ const styles = `
   }
 
   .pd-video iframe { width: 100%; height: 100%; border: none; }
+
+  /* ── Pills for credits / format / tuition (regular programs) ── */
+  .pd-pills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+
+  .pd-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .pd-pill-blue   { background: #e8eef8; color: #1a3a6b; }
+  .pd-pill-green  { background: #e6f4ec; color: #1a6b3a; }
+  .pd-pill-yellow { background: #fff8e1; color: #7a5200; border: 1.5px solid #f7c948; }
+
+  /* description block */
+  .pd-description {
+    font-size: 13.5px;
+    color: #2d3748;
+    line-height: 1.75;
+    white-space: pre-line;
+  }
 `;
 
 function normaliseInternational(raw) {
@@ -323,10 +353,13 @@ function normaliseInternational(raw) {
     testimonial:           raw.testimonial,
     flag_image:            raw.flag_image,
     _images:               images,
+    // regular-only fields — not present
+    credits:               null,
+    format:                null,
+    description:           null,
   };
 }
 
-// Map programs_international columns → unified shape used in the template
 function normaliseRegular(raw) {
   return {
     university_logo:       raw.university_logo ?? null,
@@ -338,7 +371,7 @@ function normaliseRegular(raw) {
     city:                  raw.city,
     study_duration:        raw.duration,
     tuition_info:          raw.tuition,
-    description:           raw.description,
+    description:           raw.description ?? null,
     video_link:            raw.video_url,
     flag_image:            raw.flag_image ?? null,
     university_link:       raw.university_link ?? null,
@@ -357,6 +390,9 @@ function normaliseRegular(raw) {
     location:              raw.location ?? null,
     climate:               raw.climate ?? null,
     continent:             raw.continent ?? null,
+    // ✅ new fields from programs table
+    credits:               raw.credits ?? null,
+    format:                raw.format ?? null,
     _images:               raw.img_url ? [raw.img_url] : [],
   };
 }
@@ -365,10 +401,10 @@ export default function ProgramDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   const searchParams = new URLSearchParams(location.search);
   const typeParam = searchParams.get("type");
-  
+
   const [isInternational, setIsInternational] = useState(
     typeParam === "intl" ? true : typeParam === "regular" ? false : location.state?.isInternational ?? null
   );
@@ -376,51 +412,49 @@ export default function ProgramDetail() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      // If we know which table, fetch directly
-      if (isInternational === true) {
-        const { data: raw, error } = await supabase2
-          .from("program_international").select("*").eq("id", id).single();
-        if (error) throw error;
-        setData(normaliseInternational(raw));
-        return;
-      }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (isInternational === true) {
+          const { data: raw, error } = await supabase2
+            .from("program_international").select("*").eq("id", id).single();
+          if (error) throw error;
+          setData(normaliseInternational(raw));
+          return;
+        }
 
-      if (isInternational === false) {
-        const { data: raw, error } = await supabase2
-          .from("programs").select("*").eq("id", id).single();
-        if (error) throw error;
+        if (isInternational === false) {
+          const { data: raw, error } = await supabase2
+            .from("programs").select("*").eq("id", id).single();
+          if (error) throw error;
           setData(normaliseRegular(raw));
-        return;
-      }
+          return;
+        }
 
-      // isInternational is null (direct URL) — try both tables
-      const { data: intl } = await supabase2
-        .from("program_international").select("*").eq("id", id).single();
-      if (intl) {
-        setIsInternational(true);
-        setData(normaliseInternational(intl));
-        return;
-      }
+        // isInternational is null (direct URL) — try both tables
+        const { data: intl } = await supabase2
+          .from("program_international").select("*").eq("id", id).single();
+        if (intl) {
+          setIsInternational(true);
+          setData(normaliseInternational(intl));
+          return;
+        }
 
-      const { data: regular } = await supabase2
-        .from("programs").select("*").eq("id", id).single();
-      if (regular) {
-        setIsInternational(false);
-        setData({ ...regular, _images: regular.city_images
-          ? regular.city_images.split(",").map(s => s.trim()).filter(Boolean) : [] });
+        const { data: regular } = await supabase2
+          .from("programs").select("*").eq("id", id).single();
+        if (regular) {
+          setIsInternational(false);
+          setData(normaliseRegular(regular));
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
 
-  fetchData();
-}, [id, isInternational]);
+    fetchData();
+  }, [id, isInternational]);
 
   if (loading)
     return <p style={{ marginTop: 80, textAlign: "center", fontSize: 18 }}>Ачааллаж байна...</p>;
@@ -462,6 +496,7 @@ useEffect(() => {
         </div>
 
         <div className="pd-card">
+
           {/* ── Header ── */}
           <div className="pd-header">
             <div className="pd-header-left">
@@ -485,7 +520,30 @@ useEffect(() => {
           {/* ── Body ── */}
           <div className="pd-body">
 
-            {/* Intro */}
+            {/* ── Pills: format / credits / tuition (regular programs only) ── */}
+            {(data.format || data.credits || data.tuition_info) && !isInternational && (
+              <div className="pd-pills-row">
+                {data.format && (
+                  <span className="pd-pill pd-pill-blue">
+                    {data.format}
+                  </span>
+                )}
+                {data.credits && (
+                  <span className="pd-pill pd-pill-blue">
+                    <FaLayerGroup style={{ fontSize: 11 }} />
+                    {data.credits} кредит
+                  </span>
+                )}
+                {data.tuition_info && (
+                  <span className="pd-pill pd-pill-green">
+                    <FaMoneyBillWave style={{ fontSize: 11 }} />
+                    {data.tuition_info}
+                  </span>
+                )}
+              </div>
+            )}
+
+            {/* ── Intro row ── */}
             <div className="pd-intro-row">
               <div>
                 {data.majors && (
@@ -507,7 +565,14 @@ useEffect(() => {
               )}
             </div>
 
-            {/* Requirements & Fees */}
+            {/* ── Description (regular programs only) ── */}
+            {data.description && !isInternational && (
+              <Section title="Хөтөлбөрийн тайлбар">
+                <p className="pd-description">{data.description}</p>
+              </Section>
+            )}
+
+            {/* ── Requirements & Fees ── */}
             <div className="pd-two-col">
               {requirementsList.length > 0 && (
                 <Section title="Шилжин суралцах шаардлага">
@@ -518,7 +583,10 @@ useEffect(() => {
               )}
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                 <Section title="Сургалтын болон байрны мэдээлэл">
-                  <InfoRow label="Сургалтын төлбөр" value={data.tuition_info} />
+                  {/* tuition_info shown here only for international (regular already has the pill above) */}
+                  {isInternational && (
+                    <InfoRow label="Сургалтын төлбөр" value={data.tuition_info} />
+                  )}
                   <InfoRow label="Оюутны байр"      value={data.dorm_info} />
                   <InfoRow label="Даатгал"           value={data.health_insurance} />
                 </Section>
@@ -532,24 +600,27 @@ useEffect(() => {
               </div>
             </div>
 
-            {/* Academic */}
+            {/* ── Academic info ── */}
             <Section title="Академик мэдээлэл">
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px 24px" }}>
                 <InfoRow label="Сургалтын хугацаа" value={data.study_duration} />
                 <InfoRow label="Байршил"            value={data.location} />
                 <InfoRow label="Цаг уур"            value={data.climate} />
                 <InfoRow label="Континент"          value={data.continent} />
+                {/* credits shown here as an InfoRow too for regular programs */}
+                {!isInternational && <InfoRow label="Кредит"  value={data.credits} />}
+                {!isInternational && <InfoRow label="Хэлбэр"  value={data.format} />}
               </div>
             </Section>
 
-            {/* Scholarship */}
+            {/* ── Scholarship ── */}
             {data.scholarship && (
               <div className="pd-scholarship">
                 Тэтгэлэг: <span>{data.scholarship}</span>
               </div>
             )}
 
-            {/* Media buttons */}
+            {/* ── Media buttons ── */}
             {(data.brochure || data.reel || data.university_link) && (
               <div className="pd-media-row">
                 {data.brochure && (
@@ -570,7 +641,7 @@ useEffect(() => {
               </div>
             )}
 
-            {/* Video */}
+            {/* ── Video ── */}
             {data.video_link && (
               <div className="pd-video">
                 <iframe
@@ -581,7 +652,7 @@ useEffect(() => {
               </div>
             )}
 
-            {/* Carousel */}
+            {/* ── Carousel ── */}
             {images.length > 1 && (
               <div className="pd-carousel">
                 <Swiper modules={[Navigation]} navigation slidesPerView={1}>
@@ -594,7 +665,7 @@ useEffect(() => {
               </div>
             )}
 
-            {/* Testimonials */}
+            {/* ── Testimonial ── */}
             {data.testimonial && (
               <Section title="Оюутнуудын сэтгэгдэл">
                 <div className="pd-testimonial">"{data.testimonial}"</div>
@@ -606,7 +677,7 @@ useEffect(() => {
           {data.university_link && (
             <div className="pd-footer-banner">
               <span className="pd-footer-label">Сургуулийн вэбсайт:</span>
-              <a              
+              <a
                 href={data.university_link}
                 target="_blank"
                 rel="noopener noreferrer"
