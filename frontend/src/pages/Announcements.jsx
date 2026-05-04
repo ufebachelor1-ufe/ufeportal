@@ -15,6 +15,15 @@ export default function Announcements() {
   const [announcements, setAnnouncements] = useState([]); 
   const [current, setCurrent] = useState(1); 
   const navigate = useNavigate(); 
+
+  const formatPreview = (html) => {
+    if (!html) return "";
+    
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    let text = doc.body.textContent || "";
+    
+    return text.replace(/\u00a0/g, " ").trim();
+  };
  
   useEffect(() => { 
     const fetchData = async () => { 
@@ -76,10 +85,9 @@ export default function Announcements() {
                     </h3> 
    
                     {a.description && ( 
-                      <div 
-                        className="text-sm text-gray-600 line-clamp-3"
-                        dangerouslySetInnerHTML={{ __html: a.description }}
-                      />
+                      <p className="text-sm text-gray-600 line-clamp-3 leading-relaxed text-justify"> 
+                        {formatPreview(a.description)} 
+                      </p> 
                     )} 
                   </div> 
    

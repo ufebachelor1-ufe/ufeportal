@@ -39,7 +39,7 @@ const MainLayout = ({ children }) => {
       link: "/globe",
       items: [
         { name: "Өдрийн", link: "/programs/degree/Үндсэн" },
-        { name: "Олон улсын", link: "/programs/degree/Хамтарсан" },
+        { name: "Олон улсын хамтарсан", link: "/programs/degree/Хамтарсан" },
         { name: "BTEC", link: "/programs/degree/BTEC" },
         { name: "Rotation", link: "/programs/degree/Rotation" },
         { name: "Интерактив", link: "/programs/degree/Интерактив" },

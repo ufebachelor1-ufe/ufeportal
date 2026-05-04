@@ -94,6 +94,7 @@ export default function NewsDetail() {
           className="
             w-full min-w-0 overflow-hidden
             text-base leading-relaxed text-gray-700
+            text-justify
             [&_*]:max-w-full
             [&_a]:text-blue-600 [&_a]:underline [&_a]:break-all
             [&_p]:mb-3 [&_p]:break-words
@@ -103,6 +104,7 @@ export default function NewsDetail() {
             [&_pre]:overflow-x-auto [&_pre]:bg-gray-100 [&_pre]:p-3 [&_pre]:rounded [&_pre]:text-sm
           "
           dangerouslySetInnerHTML={{ __html: post.description }}
+
         />
 
         {/* Swiper gallery */}

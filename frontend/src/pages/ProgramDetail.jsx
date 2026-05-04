@@ -555,7 +555,7 @@ export default function ProgramDetail() {
                 <InfoRow label="Суралцах хэл"     value={data.study_language} />
                 <InfoRow label="Улс"               value={data.country} />
                 <InfoRow label="Хот"               value={data.city} />
-                <InfoRow label="Үүссэн он"         value={data.founded_year} />
+                <InfoRow label="Хамтарсан он"         value={data.founded_year} />
                 <InfoRow label="Хүн ам"            value={data.population} />
                 <InfoRow label="Дэлхийн зэрэглэл"  value={data.world_ranking} />
                 <InfoRow label="Нийт оюутан"       value={data.staff_student_info} />
