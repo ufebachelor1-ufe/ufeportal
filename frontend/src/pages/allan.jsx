@@ -40,29 +40,32 @@ export default function Allan() {
         {posts.map((post) => (
           <Link
             key={post.id}
-            to={`/news/${post.id}`}   // ✅ navigate to page
-            className="flex flex-col h-full p-3 transition bg-white rounded shadow hover:shadow-md"
+            to={`/news/${post.id}`}
+            /* Added 'group' and 'relative' here to anchor the overlay to the whole card */
+            className="relative group flex flex-col h-full p-3 transition bg-white rounded shadow hover:shadow-md overflow-hidden"
           >
+            {/* Image Section */}
             {post.image_url && (
-              <div className="relative w-full h-32 mb-2 group">
+              <div className="w-full h-32 mb-2">
                 <img
                   src={post.image_url}
                   alt={post.title}
                   className="object-cover w-full h-32 rounded"
                 />
-
-                {/* Hover overlay */}
-                <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-black rounded opacity-0 bg-opacity-40 group-hover:opacity-100">
-                  <button className="px-4 py-1.5 text-sm font-semibold text-white bg-blue-600 rounded hover:bg-blue-700">
-                    Унших
-                  </button>
-                </div>
               </div>
             )}
 
+            {/* Title Section */}
             <p className="flex-1 text-base font-semibold line-clamp-3">
               {post.title}
             </p>
+
+            {/* Hover overlay - Now outside the image conditional */}
+            <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-black bg-opacity-40 rounded opacity-0 group-hover:opacity-100">
+              <button className="px-4 py-1.5 text-sm font-semibold text-white bg-blue-600 rounded hover:bg-blue-700">
+                Унших
+              </button>
+            </div>
           </Link>
         ))}
       </div>

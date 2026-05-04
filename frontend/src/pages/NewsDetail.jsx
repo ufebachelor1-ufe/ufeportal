@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules"; 
 import "swiper/css";
 import "swiper/css/navigation";
+import "react-quill-new/dist/quill.snow.css";
 
 export default function NewsDetail() {
   const { id } = useParams();
@@ -39,11 +40,11 @@ export default function NewsDetail() {
   const images = post.images || [];
 
   return (
-    <div className="max-w-3xl p-6 mx-auto">
-      {/* Magazine-style bordered container */}
-      <div className="p-6 space-y-6 bg-white border border-gray-200 shadow-lg rounded-2xl">
+    // Added overflow-x-hidden to prevent horizontal scroll on mobile
+    <div className="max-w-3xl p-4 mx-auto overflow-x-hidden sm:p-6">
+      <div className="p-4 space-y-6 bg-white border border-gray-200 shadow-lg sm:p-6 rounded-2xl overflow-hidden">
         
-        {/* Top bar: Back button + date */}
+        {/* Top bar */}
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <Link
             to="/"
@@ -55,7 +56,7 @@ export default function NewsDetail() {
             <span className="flex items-center gap-1 font-medium tracking-wide text-blue-600 uppercase">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-4 h-4"
+                className="w-4 h-4 shrink-0"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -73,12 +74,13 @@ export default function NewsDetail() {
         </div>
 
         {/* Title */}
-        <h1 className="text-2xl font-semibold leading-snug text-gray-900 sm:text-3xl">
+        <h1 className="text-2xl font-semibold leading-snug text-gray-900 break-words sm:text-3xl">
           {post.title}
         </h1>
 
+        {/* Cover image */}
         {post.image_url && (
-          <div className="mt-4 overflow-hidden rounded-lg shadow-md bg-black flex items-center justify-center">
+          <div className="overflow-hidden rounded-lg shadow-md bg-black flex items-center justify-center">
             <img
               src={post.image_url}
               alt={post.title}
@@ -87,14 +89,25 @@ export default function NewsDetail() {
           </div>
         )}
 
-        {/* Description */}
-        <p className="text-base leading-relaxed text-justify text-gray-700 whitespace-pre-line indent-6">
-          {post.description}
-        </p>
+        {/* Description — Quill HTML output */}
+        <div
+          className="
+            w-full min-w-0 overflow-hidden
+            text-base leading-relaxed text-gray-700
+            [&_*]:max-w-full
+            [&_a]:text-blue-600 [&_a]:underline [&_a]:break-all
+            [&_p]:mb-3 [&_p]:break-words
+            [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5
+            [&_img]:rounded [&_img]:max-w-full [&_img]:h-auto
+            [&_blockquote]:border-l-4 [&_blockquote]:border-blue-300 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-gray-500
+            [&_pre]:overflow-x-auto [&_pre]:bg-gray-100 [&_pre]:p-3 [&_pre]:rounded [&_pre]:text-sm
+          "
+          dangerouslySetInnerHTML={{ __html: post.description }}
+        />
 
-        {/* Swiper for extra images */}
+        {/* Swiper gallery */}
         {images.length > 0 && (
-          <div className="pt-6">
+          <div className="pt-4">
             <Swiper
               modules={[Navigation]}
               navigation
@@ -104,30 +117,21 @@ export default function NewsDetail() {
               watchSlidesProgress={false}
               onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
               className="w-full overflow-hidden shadow-lg rounded-xl"
-              style={{ overflow: 'hidden' }}
             >
               {images.map((img, index) => (
-                <SwiperSlide
-                  key={index}
-                  className="w-full"
-                  style={{ overflow: 'hidden' }}
-                >
-                  <div
-                    className="relative w-full h-[420px] sm:h-[520px] bg-white rounded-lg overflow-hidden"
-                    style={{ overflow: 'hidden' }}
-                  >
+                <SwiperSlide key={index} className="w-full">
+                  <div className="relative w-full h-[360px] sm:h-[480px] bg-white rounded-lg overflow-hidden flex items-center justify-center">
                     <img
                       src={img}
                       alt={`gallery-${index}`}
-                      className="block object-contain w-full h-full"
-                      style={{ display: 'block', overflow: 'hidden' }}
+                      className="object-contain w-full h-full"
                     />
                   </div>
                 </SwiperSlide>
               ))}
             </Swiper>
 
-            {/* Custom dash pagination */}
+            {/* Dash pagination */}
             <div className="flex justify-center mt-4">
               {images.map((_, idx) => (
                 <span

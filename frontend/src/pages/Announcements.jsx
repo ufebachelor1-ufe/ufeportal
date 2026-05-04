@@ -76,9 +76,10 @@ export default function Announcements() {
                     </h3> 
    
                     {a.description && ( 
-                      <p className="text-sm text-gray-600 line-clamp-3"> 
-                        {a.description} 
-                      </p> 
+                      <div 
+                        className="text-sm text-gray-600 line-clamp-3"
+                        dangerouslySetInnerHTML={{ __html: a.description }}
+                      />
                     )} 
                   </div> 
    
