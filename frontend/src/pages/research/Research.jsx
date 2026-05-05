@@ -15,11 +15,11 @@ export default function Research() {
     { title: "Зөвлөмж", path: "recommendations" },
     { title: "Бичилтийн стандарт", path: "writing-standards" },
     { title: "EBSCO", path: "ebsco" },
-    { title: "Хурлын зар", path: "conference-notices" },
-    { title: "Гаргасан амжилт", path: "achievements" },
+    //{ title: "Хурлын зар", path: "conference-notices" },
+    //{ title: "Гаргасан амжилт", path: "achievements" },
     { title: "Хурлын эмхэтгэл", path: "conference-proceedings" },
     { title: "СЭЗИС-ийн бүтээлийн сангийн холбоос", path: "library-links" },
-    { title: "Захиалгат судалгааны булан", path: "custom-research" },
+    //{ title: "Захиалгат судалгааны булан", path: "custom-research" },
   ];
 
   return (

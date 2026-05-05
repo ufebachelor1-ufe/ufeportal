@@ -7,21 +7,29 @@ export default function ConnectCenter() {
       <div className="flex items-center gap-3 mb-4">
         <FaCalendarAlt className="text-2xl text-blue-500" />
         <h2 className="text-2xl font-semibold text-gray-800">
-          UFE Connect Center хуваарь
+          UFE Connect Zone хуваарь
         </h2>
       </div>
 
-      <p className="max-w-2xl mb-8 text-gray-600">
-        Зөвлөгөө өгөх төвийн цагийн хуваарь болон уулзалтын дэлгэрэнгүй
-        мэдээллийг доорх хүснэгтээс харна уу.
-      </p>
+      <div className="max-w-2xl mb-8 space-y-3 text-gray-600">
+        <div className="flex items-center gap-3">
+          <span className="text-blue-600"></span>
+          <p><strong>Байршил:</strong> СЭЗИС, С байр, 103 тоот</p>
+        </div>
+        
+        <div className="flex items-center gap-3">
+          <span className="text-blue-600"></span>
+          <p><strong>Хуваарь:</strong> 2026.04.22 – 2026.07.03</p>
+          <p>Пүрэв, Баасан | 14:00 – 17:30</p>
+        </div>
+      </div>
 
       {/* Schedule Card */}
       <div className="p-4 bg-white border border-gray-200 shadow-sm rounded-xl">
         <div className="overflow-hidden rounded-lg">
           <img
             src="/images/connect_schedule.jpg"
-            alt="UFE Connect Center хуваарь"
+            alt="UFE Connect Zone хуваарь"
             className="object-contain w-full"
           />
         </div>

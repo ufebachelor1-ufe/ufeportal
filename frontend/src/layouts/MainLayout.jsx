@@ -66,9 +66,10 @@ const MainLayout = ({ children }) => {
       items: [
         { name: "Зөвлөмж", link: "/research/recommendations" },
         { name: "Бичилтийн стандарт", link: "/research/writing-standards" },
+        
         { name: "EBSCO", link: "/research/ebsco" },
-        { name: "Хурлын зар", link: "/research/conference-notices" },
-        { name: "Гаргасан амжилт", link: "/research/achievements" },
+        //{ name: "Хурлын зар", link: "/research/conference-notices" },
+        //{ name: "Гаргасан амжилт", link: "/research/achievements" },
         { name: "Хурлын эмхэтгэл", link: "/research/conference-proceedings" },
         { name: "СЭЗИС-ийн бүтээлийн сангийн холбоос", link: "/research/library-links" },
         { name: "Захиалгат судалгааны булан", link: "/research/custom-research" },
@@ -79,8 +80,8 @@ const MainLayout = ({ children }) => {
       link: "/services",
       items: [
         { name: "Тэмдэгтийн хөтөлбөр", link: "/services/merit-program" },
-        { name: "Ажлын байр", link: "/services/jobs" },
-        { name: "UFE Connect Center", link: "/services/connect-center" },
+        //{ name: "Ажлын байр", link: "/services/jobs" },
+        { name: "UFE Connect Zone", link: "/services/connect-center" },
         { name: "Оюутны холбоо", link: "/services/student-union" },
         { name: "Клуб", link: "/services/clubs" },
         { name: "Амжилтын бүртгэл", link: "/services/achievements" },

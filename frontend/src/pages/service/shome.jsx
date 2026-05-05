@@ -15,8 +15,8 @@ export default function StudentServices() {
 
   const menuItems = [
     { title: "Тэмдэгтийн хөтөлбөр", path: "merit-program" },
-    { title: "Ажлын байр", path: "jobs" },
-    { title: "UFE Connect Center", path: "connect-center" },
+    //{ title: "Ажлын байр", path: "jobs" },
+    { title: "UFE Connect Zone", path: "connect-center" },
     { title: "Оюутны холбоо", path: "student-union" },
     { title: "Клубүүд", path: "clubs" },
     { title: "Амжилтын бүртгэл", path: "achievements" },
