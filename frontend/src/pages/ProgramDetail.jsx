@@ -591,7 +591,7 @@ export default function ProgramDetail() {
                   <InfoRow label="Даатгал"           value={data.health_insurance} />
                 </Section>
                 {admissionList.length > 0 && (
-                  <Section title="Элсэлтийн үйл явц">
+                  <Section title="Элсэлтийн үйл ажиллагаа">
                     <ol className="pd-list">
                       {admissionList.map((step, i) => <li key={i}>{step}</li>)}
                     </ol>
