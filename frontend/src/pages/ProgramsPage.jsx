@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { supabase2 } from "../supabase2";
 import { FaUniversity, FaMapMarkerAlt, FaClock, FaGlobe } from "react-icons/fa";
 
-const IS_INTERNATIONAL = "Хамтарсан";
+const IS_INTERNATIONAL = "Олон улсын хамтарсан хөтөлбөр";
 
 export default function ProgramsPage() {
   const { degree } = useParams();
@@ -85,7 +85,7 @@ export default function ProgramsPage() {
         "Орчин үеийн техник тоног төхөөрөмж"
       ]
     },
-    "Хамтарсан": {
+    "Олон улсын хамтарсан хөтөлбөр": {
       title: "Олон улсын хөтөлбөр",
       description: "Гадаадын шилдэг их сургуулиудтай хамтран зохион байгуулж буй хөтөлбөр. Суралцагчид хоёр улсын зэрэг хамгаалах, олон улсын туршлага хуримтлуулах боломжтой.",
       duration: "2+2 жил",

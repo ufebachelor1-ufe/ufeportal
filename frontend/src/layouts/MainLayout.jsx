@@ -39,7 +39,7 @@ const MainLayout = ({ children }) => {
       link: "/globe",
       items: [
         { name: "Өдрийн", link: "/programs/degree/Үндсэн" },
-        { name: "Олон улсын хамтарсан", link: "/programs/degree/Хамтарсан" },
+        { name: "Олон улсын хамтарсан", link: "/programs/degree/Олон улсын хамтарсан хөтөлбөр" },
         { name: "BTEC", link: "/programs/degree/BTEC" },
         { name: "Rotation", link: "/programs/degree/Rotation" },
         { name: "Интерактив", link: "/programs/degree/Интерактив" },
@@ -338,7 +338,7 @@ const MainLayout = ({ children }) => {
                 <ul className="grid grid-cols-2 gap-x-8 gap-y-2.5 mb-8">
                   {[
                     "Үндсэн",
-                    "Хамтарсан",
+                    "Олон улсын хамтарсан",
                     "BTEC",
                     "Rotation",
                     "Интерактив",
