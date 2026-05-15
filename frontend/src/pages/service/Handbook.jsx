@@ -16,7 +16,7 @@ export default function Handbook() {
 
           {/* Download Button */}
           <a
-            href="/Handbook.pdf"
+            href="/Guide.pdf"
             download="Оюутны_гарын_авлага.pdf"
             className="px-5 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-medium shadow hover:bg-blue-700 transition"
           >
@@ -27,7 +27,7 @@ export default function Handbook() {
         {/* PDF Viewer */}
         <div className="p-4 bg-white shadow-lg rounded-3xl">
           <iframe
-            src="/Handbook.pdf"
+            src="/Guide.pdf"
             className="w-full h-[750px] md:h-[900px] rounded-2xl border"
             title="Оюутны гарын авлага"
           />
