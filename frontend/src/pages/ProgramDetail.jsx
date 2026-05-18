@@ -555,7 +555,7 @@ export default function ProgramDetail() {
                 <InfoRow label="Суралцах хэл"     value={data.study_language} />
                 <InfoRow label="Улс"               value={data.country} />
                 <InfoRow label="Хот"               value={data.city} />
-                <InfoRow label="Хамтарсан он"         value={data.founded_year} />
+                <InfoRow label="Байгуулагдсан он"         value={data.founded_year} />
                 <InfoRow label="Хүн ам"            value={data.population} />
                 <InfoRow label="Дэлхийн зэрэглэл"  value={data.world_ranking} />
                 <InfoRow label="Нийт оюутан"       value={data.staff_student_info} />
@@ -591,7 +591,7 @@ export default function ProgramDetail() {
                   <InfoRow label="Даатгал"           value={data.health_insurance} />
                 </Section>
                 {admissionList.length > 0 && (
-                  <Section title="Элсэлтийн үйл явц">
+                  <Section title="Элсэлтийн үйл ажиллагаа">
                     <ol className="pd-list">
                       {admissionList.map((step, i) => <li key={i}>{step}</li>)}
                     </ol>
