@@ -17,7 +17,7 @@ export default function GpaCalculator() {
       if (score > 66) return 1.3;
       if (score > 62) return 1.0;
       if (score > 59) return 0.5;
-      return 0.5;
+      return 0.0;
     } else {
       if (score > 94) return 4.0;
       if (score > 89) return 3.7;
