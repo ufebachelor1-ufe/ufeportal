@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 export default function GpaCalculator() {
-  const [scale, setScale] = useState("after2025"); 
-  // "before2025" or "after2025"
+  const [scale, setScale] = useState("after2024"); 
+  // "before2024" or "after2024"
 
   const scoreToGpa = (score) => {
-    if (scale === "before2025") {
+    if (scale === "before2024") {
       if (score > 95) return 4.0;
       if (score > 89) return 3.7;
       if (score > 86) return 3.4;
@@ -106,20 +106,20 @@ export default function GpaCalculator() {
         <label>
           <input
             type="radio"
-            value="before2025"
-            checked={scale === "before2025"}
+            value="before2024"
+            checked={scale === "before2024"}
             onChange={(e) => setScale(e.target.value)}
           />
-          2025 оноос өмнө элссэн
+          2024 оноос өмнө элссэн
         </label>
         <label>
           <input
             type="radio"
-            value="after2025"
-            checked={scale === "after2025"}
+            value="after2024"
+            checked={scale === "after2024"}
             onChange={(e) => setScale(e.target.value)}
           />
-          2025 оноос хойш элссэн
+          2024 оноос хойш элссэн
         </label>
       </div>
 
