@@ -28,7 +28,7 @@ export default function ConnectCenter() {
       <div className="p-4 bg-white border border-gray-200 shadow-sm rounded-xl">
         <div className="overflow-hidden rounded-lg">
           <img
-            src="/images/connect_schedule.jpg"
+            src="/images/connect_schedule2.jpg"
             alt="UFE Connect Zone хуваарь"
             className="object-contain w-full"
           />
