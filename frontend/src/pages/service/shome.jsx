@@ -7,6 +7,7 @@ import Clubs from "./Clubs";
 import Achievements from "./Achievements";
 import Handbook from "./Handbook";
 import StudentLife from "./StudentLife";
+import Scholarships from "./Scholarships";
 import { FaUserGraduate, FaBriefcase, FaHandsHelping, FaBrain } from "react-icons/fa";
 
 
@@ -19,7 +20,8 @@ export default function StudentServices() {
     { title: "UFE Connect Zone", path: "connect-center" },
     { title: "Оюутны холбоо", path: "student-union" },
     { title: "Клубүүд", path: "clubs" },
-    { title: "Амжилтын бүртгэл", path: "achievements" },
+    { title: "Амжилтын бүртгэл, мэдээлэл", path: "achievements" },
+    { title: "Тэтгэлэгийн бүртгэл, мэдээлэл", path: "scholarships" },
     { title: "Оюутны гарын авлага", path: "handbook" },
     { title: "Оюутны амьдрал", path: "student-life" },
   ];
@@ -104,6 +106,7 @@ export default function StudentServices() {
           <Route path="student-union" element={<StudentUnion />} />
           <Route path="clubs" element={<Clubs />} />
           <Route path="achievements" element={<Achievements />} />
+          <Route path="scholarships" element={<Scholarships />} />
           <Route path="handbook" element={<Handbook />} />
           <Route path="student-life" element={<StudentLife />} />
         </Routes>

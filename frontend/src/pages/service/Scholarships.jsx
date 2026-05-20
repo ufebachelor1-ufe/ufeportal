@@ -1,4 +1,4 @@
-export default function Achievements() {
+export default function Scholarships() {
   return (
     <div className="space-y-8">
 
@@ -13,6 +13,22 @@ export default function Achievements() {
         </div>
       </section>
 
+      <section className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8">
+        <h3 className="text-2xl font-bold text-primary mb-6">Тэтгэлгийн мэдээлэл</h3>
+        <div className="flex flex-col gap-4">
+          <div className="p-4 bg-white border border-gray-200 shadow-sm rounded-xl">
+            <div className="overflow-hidden rounded-lg">
+              <img src="/Rector.png" alt="Зураг 1" className="object-contain w-full" />
+            </div>
+          </div>
+          <div className="p-4 bg-white border border-gray-200 shadow-sm rounded-xl">
+            <div className="overflow-hidden rounded-lg">
+              <img src="/other.png" alt="Зураг 2" className="object-contain w-full" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-primary rounded-2xl p-6 sm:p-8">
         <h3 className="text-xl font-bold text-white mb-2">Амжилт тэтгэлэгт бүртгүүлэх заавар</h3>
         <p className="text-white/70 text-sm mb-4">СЭЗИС-ийн оюутнуудын амжилтын тухай</p>
@@ -23,6 +39,7 @@ export default function Achievements() {
           </video>
         </div>
       </section>
+
     </div>
   );
 }
