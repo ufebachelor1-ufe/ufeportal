@@ -14,11 +14,11 @@ export default function AmbassadorStudent() {
               </svg>
             </div>
             <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-              Амбассадор оюутны хөтөлбөр
+              Амбассадор оюутан
             </h1>
           </div>
           <p className="text-white/80 text-base leading-relaxed max-w-3xl">
-            СЭЗИС-ийг төлөөлөх, шинэ элсэгчдийг чиглүүлэх, сургуулийн үнэт зүйлсийг түгээх манлайлагч оюутнуудыг бэлтгэх хөтөлбөр.
+            СЭЗИС-ийн Амбассадор оюутны хөтөлбөр нь идэвхтэй, хариуцлагатай, харилцааны ур чадвартай оюутнуудыг сургуулиа төлөөлөх, элсэлт сурталчилгаа болон оюутны оролцооны үйл ажиллагаанд оролцуулах зорилготой. Тус хөтөлбөрөөр дамжуулан оюутнууд сургуулийн үнэт зүйл, соёлыг түгээн дэлгэрүүлж, шинэ болон одоо суралцаж буй оюутнуудад мэдээлэл, чиглүүлэг өгөхийн зэрэгцээ нийгэм, олон нийтэд эерэг хувь нэмэр оруулах боломжтой.
           </p>
         </div>
       </section>
@@ -28,7 +28,8 @@ export default function AmbassadorStudent() {
 
         {/* LEFT COLUMN - Info Cards */}
         <div className="space-y-6">
-          
+
+          {/* Зорилго */}
           <div className="bg-white rounded-2xl border border-gray-200 p-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
@@ -39,10 +40,26 @@ export default function AmbassadorStudent() {
               <h3 className="font-bold text-primary">Зорилго</h3>
             </div>
             <p className="text-sm text-gray-600 leading-relaxed">
-              СЭЗИС-ийг дотоод, гадаад орчинд төлөөлөх, шинэ элсэгчдийг чиглүүлэх, сургуулийн үнэт зүйлсийг түгээх, нийгэмд эерэг өөрчлөлт авчрах.
+              Дотоод, гадаад орчинд сургуулиа төлөөлөх, шинэ элсэгчдийг чиглүүлэн ажиллах, сургуулийн үнэт зүйлсийг түгээн дэлгэрүүлэх, манлайлагч оюутнуудыг шалгаруулж, алдаршуулахад зорилготой.
             </p>
           </div>
 
+          {/* Үндсэн чиг үүрэг */}
+          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-primary">Үндсэн чиг үүрэг</h3>
+            </div>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Амбассадор оюутнууд өөрсдийн санаачилга, бүтээлч шинэ санаанд тулгуурлан оюутны оролцоог нэмэгдүүлэх үйл ажиллагаа зохион байгуулж, сургууль болон нийгэмд эерэг хувь нэмэр оруулах.
+            </p>
+          </div>
+
+          {/* Хэнд зориулагдсан */}
           <div className="bg-white rounded-2xl border border-gray-200 p-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
@@ -50,13 +67,29 @@ export default function AmbassadorStudent() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               </div>
-              <h3 className="font-bold text-primary">Хамрах хүрээ</h3>
+              <h3 className="font-bold text-primary">Хэнд зориулагдсан бэ?</h3>
             </div>
             <p className="text-sm text-gray-600 leading-relaxed">
-              СЭЗИС-ийн бакалаврын өдрийн хөтөлбөрийн оюутнууд
+              СЭЗИС-ийн бакалаврын хөтөлбөрт суралцаж буй оюутнуудад зориулагдсан.
             </p>
           </div>
 
+          {/* Хөтөлбөрийн үнэ цэн */}
+          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-primary">Хөтөлбөрийн үнэ цэн</h3>
+            </div>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Оюутан өөрийн мэдлэг, туршлага, санаачилгаар бусдад нөлөөлөх, сургуулийн хамтын орчинд бодит хувь нэмэр оруулах, цаашдын суралцах болон ажил мэргэжлийн замналд хэрэг болохуйц үнэ цэнтэй туршлага хуримтлуулах боломжтой.
+            </p>
+          </div>
+
+          {/* Хугацаа */}
           <div className="bg-white rounded-2xl border border-gray-200 p-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
@@ -64,45 +97,33 @@ export default function AmbassadorStudent() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="font-bold text-primary">Үргэлжлэх хугацаа</h3>
+              <h3 className="font-bold text-primary">Хугацаа</h3>
             </div>
             <p className="text-sm text-gray-600 leading-relaxed">
-              Хичээлийн жилийн улирал бүр
+              Намар болон хаврын улиралд хэрэгжинэ. Амбассадор оюутнууд тухайн улиралд хэрэгжүүлэх ажлын төлөвлөгөөг боловсруулж, холбогдох нэгжээр батлуулсны үндсэн дээр төлөвлөгөөний хүрээнд үйл ажиллагаанд оролцон ажиллана.
             </p>
           </div>
 
+          {/* Хариуцсан нэгж */}
           <div className="bg-white rounded-2xl border border-gray-200 p-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                 <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
-              <h3 className="font-bold text-primary">Үйл ажиллагаа</h3>
+              <h3 className="font-bold text-primary">Хариуцсан нэгж</h3>
             </div>
-            <ul className="space-y-2 text-sm text-gray-600 leading-relaxed">
-              <li className="flex items-start gap-2">
-                <div className="mt-1 w-1.5 h-1.5 rounded-full bg-third flex-shrink-0" />
-                <span>Сургуулийн үйл ажиллагаанд оролцох, дэмжих</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="mt-1 w-1.5 h-1.5 rounded-full bg-third flex-shrink-0" />
-                <span>Оюутны хөгжлийн клуб, сургалт, уралдаан зохион байгуулах</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="mt-1 w-1.5 h-1.5 rounded-full bg-third flex-shrink-0" />
-                <span>Сайн дурын ажил, нийгмийн хариуцлагын хөтөлбөрт оролцох</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="mt-1 w-1.5 h-1.5 rounded-full bg-third flex-shrink-0" />
-                <span>Хамт олны эв нэгдэл, багийн сэтгэлгээг хөгжүүлэх уулзалт, аялал</span>
-              </li>
-            </ul>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Бакалаврын сургалтын алба хариуцан зохион байгуулж, хэрэгжилтэд хяналт тавина.
+            </p>
           </div>
         </div>
 
-        {/* RIGHT COLUMN - Requirements Panel */}
-        <div>
+        {/* RIGHT COLUMN */}
+        <div className="space-y-6">
+
+          {/* Requirements Panel */}
           <div className="bg-gradient-to-br from-primary/5 to-third/5 rounded-2xl border border-primary/10 p-8">
             <h3 className="text-lg font-bold text-primary mb-6 flex items-center gap-2">
               <div className="w-1 h-6 bg-third rounded-full" />
@@ -129,25 +150,20 @@ export default function AmbassadorStudent() {
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                Сонгон шалгаруулалт
+                Сонгон шалгаруулалтын үйл явц
               </h4>
               <ol className="space-y-2 text-sm text-gray-700">
-                <li className="flex items-start gap-3">
-                  <span className="font-bold text-primary">1.</span>
-                  <span>Бүртгэлийн үе шат</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="font-bold text-primary">2.</span>
-                  <span>Анхан шатны шалгаруулалт</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="font-bold text-primary">3.</span>
-                  <span>Ярилцлагын шат</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="font-bold text-primary">4.</span>
-                  <span>Эцсийн шалгаруулалт</span>
-                </li>
+                {[
+                  "Бүртгэлийн үе шат",
+                  "Анхан шатны шалгаруулалт",
+                  "Ярилцлагын шат",
+                  "Эцсийн шалгаруулалт",
+                ].map((step, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="font-bold text-primary">{i + 1}.</span>
+                    <span>{step}</span>
+                  </li>
+                ))}
               </ol>
             </div>
 
@@ -156,15 +172,95 @@ export default function AmbassadorStudent() {
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                Тайлан ба урамшуулал
+                Сертификат, үнэлгээ, урамшуулал
               </h4>
               <p className="text-sm text-gray-700 leading-relaxed">
-                Амжилттай ажилласан амбассадор оюутанд батламж гардуулж, олон нийтэд алдаршуулна. Батламж нь тэтгэлэг болон "Шилдэг оюутан"-д нэр дэвшихэд давуу тал болно. Сайн дурын ажлын цагийг диплом дээр тэмдэглэнэ.
+                Амбассадор хөтөлбөрт идэвхтэй оролцсон оюутнууд албан ёсны сертификат авах бөгөөд хийсэн ажлын гүйцэтгэлд үндэслэн үнэлгээ, урамшуулал хүртэх боломжтой.
               </p>
             </div>
           </div>
+
+          {/* Ач холбогдол */}
+          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-primary">Ач холбогдол</h3>
+            </div>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Амбассадор оюутнаар ажилласнаар оюутан манлайлах, бусадтай үр дүнтэй харилцах, багаар хамтран ажиллах, асуудлыг шийдвэрлэх, олон нийтийн өмнө өөрийгөө зөв илэрхийлэх зэрэг ур чадвараа бодит орчинд хөгжүүлэх боломжтой. Түүнчлэн сургуулийг төлөөлөн оролцох үйл ажиллагааны явцад хариуцлагатай байх, цагийг зөв зохион байгуулах, байгууллагын соёл, үнэт зүйлд нийцүүлэн ажиллах дадал төлөвшинө.
+            </p>
+          </div>
         </div>
       </div>
+
+      {/* SKILLS GRID - full width */}
+      <div>
+        <h2 className="text-xl font-bold text-primary mb-6 flex items-center gap-3">
+          <div className="w-1 h-7 bg-third rounded-full" />
+          Хөгжүүлэх ур чадварууд
+        </h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[
+            {
+              icon: (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              ),
+              title: "Манлайлах ур чадвар",
+              desc: "Амбассадор хөтөлбөрт оролцсоноор оюутан хариуцлага хүлээх, бусдыг зөв чиглүүлэх, идэвх санаачилгатай оролцох замаар манлайлах чадвараа бодит орчинд хөгжүүлэх боломжтой.",
+            },
+            {
+              icon: (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              ),
+              title: "Харилцааны ур чадвар",
+              desc: "Элсэгчид, эцэг эх, багш ажилтан болон бусад оюутнуудтай харилцах явцад өөрийгөө зөв илэрхийлэх, мэдээллийг ойлгомжтой хүргэх, харилцааны соёлоо сайжруулах боломж бүрдэнэ.",
+            },
+            {
+              icon: (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+              ),
+              title: "Багаар ажиллах чадвар",
+              desc: "Амбассадор оюутнууд хамтран үйл ажиллагаа зохион байгуулах, үүрэг хуваарилах, нэг зорилгын төлөө ажиллах замаар багаар ажиллах бодит чадвар, туршлага хуримтлуулна.",
+            },
+            {
+              icon: (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              ),
+              title: "Бодит туршлага",
+              desc: "Сургуулийн өдөр тутмын болон тусгай үйл ажиллагаанд оролцсоноор оюутан зөвхөн онолын бус, практикт суурилсан ажлын бодит туршлага олж авна.",
+            },
+            {
+              icon: (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              ),
+              title: "Шинэ хүмүүстэй танилцах",
+              desc: "Хөтөлбөрт хамрагдсанаар шинэ найз нөхөдтэй болохоос гадна сургууль доторх болон гаднах олон хүмүүстэй танилцаж, ирээдүйд хэрэг болохуйц харилцааны сүлжээ бий болгоно.",
+            },
+            {
+              icon: (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              ),
+              title: "Карьерын давуу тал",
+              desc: "Амбассадороор ажилласан туршлага нь оюутны CV-д үнэ цэн нэмэгдүүлж, цаашдын ажил, дадлага, манлайллын боломжуудад давуу тал болж өгнө.",
+            },
+          ].map((skill, index) => (
+            <div key={index} className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col gap-3">
+              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  {skill.icon}
+                </svg>
+              </div>
+              <h4 className="font-bold text-primary text-sm">{skill.title}</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">{skill.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </div>
   );
 }
