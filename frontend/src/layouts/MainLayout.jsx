@@ -152,7 +152,7 @@ const MainLayout = ({ children }) => {
                 to="/bsa/req"
                 className="ml-4 px-4 py-1.5  text-sm font-semibold rounded-full bg-third text-primary font-sans tracking-wider transition-all duration-200 hover:shadow-lg shadow-[0_2px_8px_rgba(255,240,0,0.25)]"
               >
-                Хүсэлт →
+                Санал,Хүсэлт →
               </Link>
             </div>
 

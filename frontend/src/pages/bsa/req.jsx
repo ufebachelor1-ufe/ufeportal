@@ -246,6 +246,23 @@ export default function Req() {
         </div>
         
       </div>
+      <div className="bg-gray-100  rounded-2xl">
+        <h3 className="font-bold text-lg mb-3">Бусад санал, хүсэлт</h3>
+        <p className="text-sm text-gray-600">
+          Teams → ASK БСА channel →Бичээд санал хүсэлтээ үлдээгээрэй. Бид таны саналд үнэлгээ өгч, боломжтой бол хэрэгжүүлэхийг хичээх болно.
+        </p>
+        <button>
+          <Link
+            to="https://teams.microsoft.com/l/channel/19%3Aaskbsa%40thread.tacv2/General?groupId=0c8e1a9c-5d9b-4f1c-8a7e-9b2e5f6d8c3e&tenantId=72f988bf-86f1-4621-90cd-4dcbbcbf86e6"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium"
+          >
+            ASK БСА channel руу орох
+            <FiExternalLink size={16} />
+          </Link>
+        </button>
+      </div>
     </div>
   );
 }
