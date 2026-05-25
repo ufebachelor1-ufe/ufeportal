@@ -20,6 +20,7 @@ import Calendar from './pages/bsa/calendar';
 import Newsbsa from './pages/bsa/newsbsa';
 import BSADetail from './pages/bsa/bsadetail';
 import Allan from './pages/allan';
+import CurriculumPlanner from './pages/curriculum';
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
           <Route path="/newsbsa" element={<Newsbsa />} />
           <Route path="/bsa/news/:id" element={<BSADetail />} />
           <Route path="/allan" element={<Allan />} />
+          <Route path="/curriculum" element={<CurriculumPlanner />} />
         </Routes>
       </MainLayout>
     </Router>
