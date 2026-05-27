@@ -17,7 +17,7 @@ export default function Staff() {
     const fetchStaff = async () => {
       const { data, error } = await supabase2
         .from("staff")
-        .select("id, full_name, position, department, bio, image_url, email")
+        .select("id, full_name, position, department, bio, image_url, email, job_duties")
         .eq("is_active", true)
         .order("order", { ascending: true });
 
@@ -85,7 +85,7 @@ export default function Staff() {
 
       {/* HERO CARD */}
       <div
-        className="relative overflow-hidden rounded-3xl bg-primary shadow-[0_30px_80px_rgba(0,0,0,0.35)] min-h-[480px] select-none touch-pan-y"
+        className="relative overflow-y-auto rounded-3xl bg-primary shadow-[0_30px_80px_rgba(0,0,0,0.35)] min-h-[480px] select-none touch-pan-y"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -100,8 +100,8 @@ export default function Staff() {
                 index === activeIndex
                   ? "opacity-100 translate-x-0 z-20"
                   : index < activeIndex
-                  ? "opacity-0 -translate-x-full"
-                  : "opacity-0 translate-x-full"
+                  ? "opacity-0 -translate-x-full md:block hidden"
+                  : "opacity-0 translate-x-full md:block hidden"
               }
             `}
           >
@@ -143,6 +143,21 @@ export default function Staff() {
                   >
                     {s.email}
                   </a>
+                )}
+
+                {s.job_duties && (
+                  <div className="mt-4">
+                    <p className="text-xs font-semibold tracking-widest uppercase text-white/60">
+                      Ажлын чиг үүрэг
+                    </p>
+                    <ul className="mt-1 space-y-1">
+                      {s.job_duties.split("\n").map((duty, i) => (
+                        <li key={i} className="text-sm leading-relaxed text-white/90">
+                          {duty}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
               </div>
             </div>
