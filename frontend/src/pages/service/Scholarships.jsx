@@ -34,7 +34,7 @@ export default function Scholarships() {
         <p className="text-white/70 text-sm mb-4">СЭЗИС-ийн оюутнуудын амжилтын тухай</p>
         <div className="aspect-video w-full rounded-lg overflow-hidden mb-4 bg-black/30 border border-white/20">
           <video controls className="w-full h-full" controlsList="nodownload" onContextMenu={(e) => e.preventDefault()}>
-            <source src="https://kbodjxuxrbsxuzntrbau.supabase.co/storage/v1/object/public/images/videos/Scholarship.mp4" type="video/mp4" />
+            <source src="https://ypjnsfqpyszcnzibfitt.supabase.co/storage/v1/object/public/images/videos/Scholarship.mp4" type="video/mp4" />
             Таны browser видео дэмжихгүй байна.
           </video>
         </div>
