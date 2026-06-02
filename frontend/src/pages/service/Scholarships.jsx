@@ -2,10 +2,51 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase2 } from "../../supabase2";
 
+// 2026 оны бүртгэлийн календарь — [нэр, курс, нээлттэй сарууд]
+const CAL = [
+  ["“АПУ” инновацлаг ур чадварын тэтгэлэгт хөтөлбөр", "1-4", [3, 4, 5]],
+  ["Шударга Ёсыг Бадраах сангийн тэтгэлэг", "1-4", [4, 5, 6]],
+  ["Бадраа сан", "1-4", [5]],
+  ["Зориг сангийн нэрэмжит тэтгэлэг", "1-4", [5, 6]],
+  ["Зориг сан + Швейцар", "1-4", [6]],
+  ["Education Fund Scholarship", "1-4", [8, 9]],
+  ["Шинэ оюутны тэтгэлэг (ХААН банк)", "1", [8, 9]],
+  ["Монгол Улсын Засгийн газрын тэтгэлэг", "1-4", [8, 9, 10]],
+  ["Khan Bank Scholarship", "2-4", [9, 10]],
+  ["МУИС – Сургалтын тэтгэлэг", "1-4", [9]],
+  ["ХААН Банк – Шилдэг оюутны тэтгэлэг", "2-4", [9, 10]],
+  ["Худалдаа хөгжлийн банк – Дадлагын тэтгэлэг", "3-4", [9]],
+  ["Ерөнхийлөгчийн нэрэмжит тэтгэлэг", "2-4", [9]],
+  ["Ерөнхий сайдын нэрэмжит тэтгэлэг", "2-4", [9]],
+  ["ХААН Банк – Шинэ оюутан", "1", [9]],
+  ["ХасБанк – “NextGen” тэтгэлэг", "2-4", [9]],
+  ["СЭЗИС-ийн Ректорын нэрэмжит тэтгэлэг", "1-4", [9]],
+  ["“Дотоодын тэтгэлэгт хөтөлбөр” (Оюу толгой)", "1-4", [9, 10]],
+  ["Оюутны тэтгэлэгт хөтөлбөр (ХасБанк)", "2-4", [9, 10]],
+  ["Оюутны тэтгэлэгт хөтөлбөр (MCS)", "1-4", [9, 10]],
+  ["МОННИС Группийн нэрэмжит тэтгэлэг", "1-4", [9, 10]],
+  ["Петровис - “Ирээдүй” оюутны тэтгэлэгт хөтөлбөр", "1-4", [9, 10]],
+  ["“Эрдэнэс-Тавантолгой”-н нэрэмжит тэтгэлэг", "1-4", [9, 10, 11]],
+  ["Golomt Bank Scholarship", "2-4", [10]],
+  ["Голомт Банк – Оюутны тэтгэлэг", "2-4", [10]],
+  ["Төрийн банк – Оюутны дэмжлэг", "2-4", [10]],
+  ["Оюу толгой – Дотоодын тэтгэлэг", "1-4", [10]],
+  ["МОННИС – Ирээдүйн манлайлагч", "1-4", [10]],
+  ["Голомт банк – “Ирээдүйн санхүүч”", "2-4", [10]],
+  ["Таван Богд Групп – Оюутны тэтгэлэг", "1-4", [10]],
+  ["MCS Групп – Оюутны хөгжлийн тэтгэлэг", "1-4", [10]],
+  ["Голомт банкны нэрэмжит тэтгэлэг", "2-4", [10]],
+  ["Нийслэлийн тэтгэлэг", "1-4", [10, 11]]
+];
+const MONTHS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+// "Идэвхтэй тоо" мөрийг дата-аас бодож гаргана (гар оролт хэрэггүй)
+const COUNTS = MONTHS.map((_, m) => CAL.filter(([, , ms]) => ms.includes(m + 1)).length);
+
 export default function Scholarships() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [featuredIndex, setFeaturedIndex] = useState(0);
+  const [calQuery, setCalQuery] = useState("");
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -34,6 +75,9 @@ export default function Scholarships() {
   const featuredPosts = posts.slice(0, 3);
   const listPosts = posts.slice(3, 7);
 
+  const q = calQuery.trim().toLowerCase();
+  const calRows = CAL.filter(([name]) => !q || name.toLowerCase().includes(q));
+
   return (
     <div className="space-y-8">
 
@@ -56,24 +100,7 @@ export default function Scholarships() {
         </div>
       </section>
 
-      {/* Section 2: Static scholarship images */}
-      <section className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8">
-        <h3 className="text-2xl font-bold text-primary mb-6">Тэтгэлгийн мэдээлэл</h3>
-        <div className="flex flex-col gap-4">
-          <div className="p-4 bg-white border border-gray-200 shadow-sm rounded-xl">
-            <div className="overflow-hidden rounded-lg">
-              <img src="/Rector.png" alt="Зураг 1" className="object-contain w-full" />
-            </div>
-          </div>
-          <div className="p-4 bg-white border border-gray-200 shadow-sm rounded-xl">
-            <div className="overflow-hidden rounded-lg">
-              <img src="/other.png" alt="Зураг 2" className="object-contain w-full" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3: News + Video side by side */}
+      {/* Section 3 (moved up): News + Video side by side */}
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start">
 
         {/* Left: News */}
@@ -233,6 +260,135 @@ export default function Scholarships() {
         </div>
 
       </div>
+
+      {/* Section 2 (moved down): Static scholarship images */}
+      <section className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8">
+        <h3 className="text-2xl font-bold text-primary mb-6">Тэтгэлгийн мэдээлэл</h3>
+        <div className="flex flex-col gap-4">
+          <div className="p-4 bg-white border border-gray-200 shadow-sm rounded-xl">
+            <div className="overflow-hidden rounded-lg">
+              <img src="/Rector.png" alt="Зураг 1" className="object-contain w-full" />
+            </div>
+          </div>
+          <div className="p-4 bg-white border border-gray-200 shadow-sm rounded-xl">
+            <div className="overflow-hidden rounded-lg">
+              <img src="/other.png" alt="Зураг 2" className="object-contain w-full" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: Бүртгэлийн календарь (responsive) */}
+      <section className="p-5 bg-white border border-gray-200 rounded-2xl sm:p-8">
+        <h3 className="mb-1 text-xl font-bold sm:text-2xl text-primary">2026 оны бүртгэлийн календарь</h3>
+        <p className="mb-5 text-sm text-gray-500">Алтан цэг = бүртгэл нээлттэй сар</p>
+
+        <div className="relative max-w-md mb-5">
+          <svg className="absolute w-4 h-4 text-gray-400 -translate-y-1/2 left-3 top-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
+          </svg>
+          <input
+            type="text"
+            value={calQuery}
+            onChange={(e) => setCalQuery(e.target.value)}
+            placeholder="Тэтгэлгийн нэрээр хайх..."
+            className="w-full py-2.5 pl-10 pr-4 text-sm transition-colors border border-gray-200 rounded-lg outline-none bg-gray-50 focus:border-primary focus:bg-white"
+          />
+        </div>
+
+        {calRows.length === 0 ? (
+          <p className="py-8 text-sm text-center text-gray-400">Хайлтанд тохирох тэтгэлэг олдсонгүй.</p>
+        ) : (
+          <>
+            {/* ── Mobile: карт хэлбэр (нээлттэй саруудыг таблетаар) ── */}
+            <div className="space-y-3 sm:hidden">
+              {calRows.map(([name, course, months], i) => (
+                <div key={i} className="p-3 border border-gray-200 rounded-xl bg-gray-50">
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <p className="text-sm font-semibold leading-snug text-primary">{name}</p>
+                    <span className="shrink-0 px-2 py-0.5 text-[11px] font-bold rounded-full bg-primary/10 text-primary whitespace-nowrap">
+                      {course} курс
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {months.map((m) => (
+                      <span key={m} className="px-2 py-1 text-[11px] font-bold rounded text-primary bg-third">
+                        {m}-р сар
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* ── Desktop / tablet: бүтэн хүснэгт ── */}
+            <div className="hidden overflow-x-auto border border-gray-200 sm:block rounded-xl">
+              <table className="w-full text-xs border-collapse min-w-[860px]">
+                <thead>
+                  <tr className="text-white bg-primary">
+                    <th className="sticky left-0 z-10 px-3 py-2.5 font-bold text-left bg-primary">Тэтгэлэг</th>
+                    <th className="px-2 py-2.5 font-bold">Курс</th>
+                    {MONTHS.map((m) => (
+                      <th key={m} className="px-1.5 py-2.5 text-[10px] font-medium text-white/80">{m}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {calRows.map(([name, course, months], i) => (
+                    <tr key={i} className={`${i % 2 ? "bg-gray-50" : "bg-white"} hover:bg-third/10 transition-colors`}>
+                      <td className={`sticky left-0 z-10 px-3 py-2 font-medium text-gray-700 border-t border-r border-gray-100 ${i % 2 ? "bg-gray-50" : "bg-white"}`}>
+                        {name}
+                      </td>
+                      <td className="px-2 py-2 text-center text-gray-500 border-t border-gray-100">{course}</td>
+                      {MONTHS.map((_, mi) => (
+                        <td key={mi} className="px-1.5 py-2 text-center border-t border-gray-100">
+                          {months.includes(mi + 1) && <span className="inline-block w-2.5 h-2.5 rounded-full bg-third shadow-sm" />}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                  {!q && (
+                    <tr className="font-bold bg-primary/5">
+                      <td className="sticky left-0 z-10 px-3 py-2.5 text-primary bg-primary/5 border-t-2 border-third">Идэвхтэй тоо</td>
+                      <td className="border-t-2 border-third"></td>
+                      {COUNTS.map((n, i) => (
+                        <td key={i} className="px-1.5 py-2.5 text-center text-primary border-t-2 border-third">{n}</td>
+                      ))}
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+
+            {/* ── Mobile: сар бүрийн идэвхтэй тоо (хүснэгт оронд) ── */}
+            {!q && (
+              <div className="mt-4 sm:hidden">
+                <p className="mb-2 text-xs font-bold tracking-wider uppercase text-primary">Сар бүрийн идэвхтэй тоо</p>
+                <div className="grid grid-cols-6 gap-1.5">
+                  {COUNTS.map((n, i) => (
+                    <div
+                      key={i}
+                      className={`flex flex-col items-center py-1.5 rounded ${n ? "bg-primary/10 text-primary font-bold" : "bg-gray-100 text-gray-400"}`}
+                    >
+                      <span className="text-[10px]">{i + 1}-р</span>
+                      <span className="text-sm">{n}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
+        )}
+
+        <p className="mt-3 text-xs text-gray-400">
+          <span className="inline-block w-2.5 h-2.5 rounded-full bg-third align-middle mr-1" />
+          Бүртгэл нээлттэй сар
+        </p>
+        <p className="mt-4 text-xs italic text-gray-400">
+          Тэмдэглэл: Бүртгэлийн хугацаа жил бүр өөрчлөгдөж болзошгүй тул албан ёсны эх сурвалжаас баталгаажуулна уу.
+        </p>
+      </section>
+
     </div>
   );
 }
