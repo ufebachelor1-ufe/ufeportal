@@ -59,6 +59,17 @@ export default function NewsAll() {
             <p className="flex-1 text-base font-semibold line-clamp-3">
               {post.title}
             </p>
+            {post.created_at && (
+              <p className="mt-2 text-xs" style={{ color: "#0000ff" }}>
+                {new Date(post.created_at)
+                  .toLocaleDateString("en-CA", {
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
+                  })
+                  .replace(/-/g, "/")}
+              </p>
+            )}
           </Link>
         ))}
       </div>
