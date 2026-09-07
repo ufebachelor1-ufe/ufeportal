@@ -355,6 +355,35 @@ const styles = `
     white-space: pre-line;
     text-align: left;
   }
+
+  .pd-academic-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 32px;
+    width: 100%;
+  }
+
+  .pd-academic-grid .pd-row {
+    min-width: 0;
+  }
+
+  .pd-academic-grid .pd-label {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .pd-academic-grid .pd-value {
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  @media (max-width: 650px) {
+    .pd-academic-grid {
+      grid-template-columns: 1fr;
+      gap: 7px;
+    }
+  }
 `;
 
 function normaliseInternational(raw) {
@@ -828,38 +857,15 @@ export default function ProgramDetail() {
 
             {/* ACADEMIC INFORMATION */}
             <Section title="Академик мэдээлэл">
+              <div className="pd-academic-grid">
 
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr 1fr",
-                  gap: "6px 24px",
-                }}
-              >
-
-                <InfoRow
-                  label="Сургалтын хугацаа"
-                  value={data.study_duration}
-                />
-
-                <InfoRow
-                  label="Байршил"
-                  value={data.location}
-                />
-
-                <InfoRow
-                  label="Цаг уур"
-                  value={data.climate}
-                />
-
-                <InfoRow
-                  label="Континент"
-                  value={data.continent}
-                />
-
-                {/* Regular programs only */}
-                {!isInternational && (
+                {!isInternational ? (
                   <>
+                    <InfoRow
+                      label="Сургалтын хугацаа"
+                      value={data.study_duration}
+                    />
+
                     <InfoRow
                       label="Кредит"
                       value={data.credits}
@@ -869,11 +875,37 @@ export default function ProgramDetail() {
                       label="Хэлбэр"
                       value={data.format}
                     />
+
+                    <InfoRow
+                      label="Сургалтын төлбөр"
+                      value={data.tuition_info}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <InfoRow
+                      label="Сургалтын хугацаа"
+                      value={data.study_duration}
+                    />
+
+                    <InfoRow
+                      label="Байршил"
+                      value={data.location}
+                    />
+
+                    <InfoRow
+                      label="Цаг уур"
+                      value={data.climate}
+                    />
+
+                    <InfoRow
+                      label="Континент"
+                      value={data.continent}
+                    />
                   </>
                 )}
 
               </div>
-
             </Section>
 
             {/* SCHOLARSHIP */}
