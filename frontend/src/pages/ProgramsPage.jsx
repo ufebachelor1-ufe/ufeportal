@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { supabase2 } from "../supabase2";
-import { FaUniversity, FaMapMarkerAlt, FaClock, FaGlobe } from "react-icons/fa";
+import {
+  FaUniversity,
+  FaMapMarkerAlt,
+  FaClock,
+  FaGlobe,
+  FaFilePdf,
+  FaYoutube,
+} from "react-icons/fa";
 
 const IS_INTERNATIONAL = "Олон улсын хамтарсан хөтөлбөр";
 
@@ -15,6 +22,7 @@ export default function ProgramsPage() {
   useEffect(() => {
     const fetchPrograms = async () => {
       setLoading(true);
+
       try {
         let data, error;
 
@@ -59,6 +67,7 @@ export default function ProgramsPage() {
         }
 
         if (error) throw error;
+
         setPrograms(data || []);
       } catch (err) {
         console.error("Error fetching programs:", err);
@@ -74,7 +83,8 @@ export default function ProgramsPage() {
   const degreeInfo = {
     "Үндсэн": {
       title: "Өдрийн хөтөлбөр",
-      description: "СЭЗИС-ийн өдрийн бакалаврын хөтөлбөр нь өндөр чанартай боловсрол олгох зорилготой. Дэлхийн жишигт нийцсэн сургалтын хөтөлбөр, мэргэжлийн багш нар таныг ирээдүйн мэргэжилтэн болоход бэлтгэнэ.",
+      description:
+        "СЭЗИС-ийн өдрийн бакалаврын хөтөлбөр нь өндөр чанартай боловсрол олгох зорилготой. Дэлхийн жишигт нийцсэн сургалтын хөтөлбөр, мэргэжлийн багш нар таныг ирээдүйн мэргэжилтэн болоход бэлтгэнэ.",
       duration: "4 жил",
       credits: "120-140 кредит",
       language: "Монгол, Англи",
@@ -82,12 +92,14 @@ export default function ProgramsPage() {
         "Олон улсын стандартад нийцсэн хөтөлбөр",
         "Практик суралцах боломж",
         "Мэргэжлийн багш нар",
-        "Орчин үеийн техник тоног төхөөрөмж"
-      ]
+        "Орчин үеийн техник тоног төхөөрөмж",
+      ],
     },
+
     "Олон улсын хамтарсан хөтөлбөр": {
       title: "Олон улсын хөтөлбөр",
-      description: "Гадаадын шилдэг их сургуулиудтай хамтран зохион байгуулж буй хөтөлбөр. Суралцагчид хоёр улсын зэрэг хамгаалах, олон улсын туршлага хуримтлуулах боломжтой.",
+      description:
+        "Гадаадын шилдэг их сургуулиудтай хамтран зохион байгуулж буй хөтөлбөр. Суралцагчид хоёр улсын зэрэг хамгаалах, олон улсын туршлага хуримтлуулах боломжтой.",
       duration: "2+2 жил",
       credits: "120-140 кредит",
       language: "Англи болон Тухайн улсын хэл",
@@ -95,25 +107,35 @@ export default function ProgramsPage() {
         "Хоёр улсын зэрэг олгох",
         "Гадаадад суралцах боломж",
         "Олон улсын сертификат",
-        "Өргөн хүрээний карьерын боломж"
-      ]
+        "Өргөн хүрээний карьерын боломж",
+      ],
     },
+
     "BTEC": {
       title: "BTEC хөтөлбөр",
-      description: "Их Британийн Pearson байгууллагын баталгаажуулсан мэргэжлийн боловсролын хөтөлбөр. Практик ур чадвар эзэмшүүлэхэд онцгой анхаардаг.",
+      description:
+        "Их Британийн Pearson байгууллагын баталгаажуулсан мэргэжлийн боловсролын хөтөлбөр. Практик ур чадвар эзэмшүүлэхэд онцгой анхаардаг.",
       duration: "2-3 жил",
       credits: "Түвшингээс хамаарна",
       language: "Англи",
+      pdf1: "https://qualifications.pearson.com/content/dam/pdf/BTEC-Higher-Nationals/btec-higher-nationals-student-guide.pdf",
+      pdf2: "https://qualifications.pearson.com/en/qualifications/btec-higher-nationals/success-stories.html",
+
+      youtube1: "https://www.youtube.com/watch?v=ZokYO4CUsus",
+      youtube2: "https://www.youtube.com/watch?v=Z3xGQRFZNY8&list=PLqnoOV7X-q8fmlF4zqT3AgTlOo9UdR8vx&index=15",
+
       features: [
         "Олон улсын хүлээн зөвшөөрөгдсөн",
         "Практик чиглэлтэй",
         "Ажлын байранд шууд ороход бэлтгэнэ",
-        "Их сургуульд шилжих боломжтой"
-      ]
+        "Их сургуульд шилжих боломжтой",
+      ],
     },
+
     "Rotation": {
       title: "Rotation хөтөлбөр",
-      description: "Суралцагчид янз бүрийн салбарт ажиллах туршлага хуримтлуулах боломжтой ротацийн хөтөлбөр. Бодит ажлын байрны туршлагатай төгсөх.",
+      description:
+        "Суралцагчид янз бүрийн салбарт ажиллах туршлага хуримтлуулах боломжтой ротацийн хөтөлбөр. Бодит ажлын байрны туршлагатай төгсөх.",
       duration: "4 жил + Дадлага",
       credits: "120-140 кредит",
       language: "Монгол, Англи",
@@ -121,12 +143,14 @@ export default function ProgramsPage() {
         "Компанид ажиллах туршлага",
         "Цалин авах боломжтой",
         "Бодит төсөл дээр суралцах",
-        "Ажлын байр баталгаатай"
-      ]
+        "Ажлын байр баталгаатай",
+      ],
     },
+
     "Интерактив": {
       title: "Интерактив хөтөлбөр",
-      description: "Орчин үеийн технологи, интерактив сургалтын аргууд ашиглан явагдах инновацийн хөтөлбөр.",
+      description:
+        "Орчин үеийн технологи, интерактив сургалтын аргууд ашиглан явагдах инновацийн хөтөлбөр.",
       duration: "4 жил",
       credits: "120-140 кредит",
       language: "Монгол, Англи",
@@ -134,12 +158,14 @@ export default function ProgramsPage() {
         "Дижитал сургалтын орчин",
         "Онлайн болон оффлайн хослуулсан",
         "Интерактив агуулга",
-        "Уян хатан цагийн хуваарь"
-      ]
+        "Уян хатан цагийн хуваарь",
+      ],
     },
+
     "ACCA, CGMA": {
       title: "ACCA, CGMA хөтөлбөр",
-      description: "СЭЗИС-ийн ACCA (Олон Улсын Мэргэшсэн Нягтлан Бодогч) болон CGMA (Олон Улсын Удирдлагын Мэргэшсэн Нягтлан Бодогч) зэргийн мэргэжлийн сургалтыг бакалаврын хөтөлбөртэй хослуулан зохион байгуулдаг. Олон улсын түвшинд хүлээн зөвшөөрөгдсөн мэргэжлийн сертификаттай төгсөх боломжтой.",
+      description:
+        "СЭЗИС-ийн ACCA (Олон Улсын Мэргэшсэн Нягтлан Бодогч) болон CGMA (Олон Улсын Удирдлагын Мэргэшсэн Нягтлан Бодогч) зэргийн мэргэжлийн сургалтыг бакалаврын хөтөлбөртэй хослуулан зохион байгуулдаг. Олон улсын түвшинд хүлээн зөвшөөрөгдсөн мэргэжлийн сертификаттай төгсөх боломжтой.",
       duration: "3.5-4 жил",
       credits: "126 кредит",
       language: "Англи, Монгол",
@@ -149,12 +175,14 @@ export default function ProgramsPage() {
         "Англи улсын BPP University-д шилжин суралцах боломж",
         "ACCA, CGMA болон СЭЗИС-ийн бакалаврын зэрэг хамтад авах",
         "100% ажлын байраар хангагддаг (PWC, Deloitte, KPMG, EY, BDO)",
-        "ЭЕШ-ын математик + англи хэлний дундаж 580+ оноотой элсэнэ"
-      ]
+        "ЭЕШ-ын математик + англи хэлний дундаж 580+ оноотой элсэнэ",
+      ],
     },
+
     "Цагийн": {
       title: "Цагийн хөтөлбөр",
-      description: "Ажил хийж байгаа болон бусад шалтгаанаар өдрийн цагаар суралцах боломжгүй иргэдэд зориулсан орой, амралтын өдрийн цагаар зохион байгуулагдах бакалаврын хөтөлбөр. Ажил, амьдралтай уялдуулан боловсрол эзэмших боломжийг олгоно.",
+      description:
+        "Ажил хийж байгаа болон бусад шалтгаанаар өдрийн цагаар суралцах боломжгүй иргэдэд зориулсан орой, амралтын өдрийн цагаар зохион байгуулагдах бакалаврын хөтөлбөр. Ажил, амьдралтай уялдуулан боловсрол эзэмших боломжийг олгоно.",
       duration: "1.5жил",
       credits: "60 орчим",
       language: "Монгол",
@@ -163,8 +191,8 @@ export default function ProgramsPage() {
         "Ажилтайгаа хослуулан суралцах",
         "өдрийн хөтөлбөртэй ижил зэрэг олгоно",
         "Сургалтын уян хатан хэлбэр(Танхим + Цахим хосолсон)",
-      ]
-    }
+      ],
+    },
   };
 
   const currentDegreeInfo = degreeInfo[degree] || {
@@ -173,7 +201,7 @@ export default function ProgramsPage() {
     duration: "-",
     credits: "-",
     language: "-",
-    features: []
+    features: [],
   };
 
   // Normalise rows so the card template works for both tables
@@ -186,6 +214,7 @@ export default function ProgramsPage() {
           country: p.country,
           city: p.city,
           duration: p.study_duration,
+
           // city_images is text[] — use first element as card image
           img_url: Array.isArray(p.city_images) ? p.city_images[0] : null,
         }
@@ -207,7 +236,9 @@ export default function ProgramsPage() {
     <div className="min-h-screen py-8 px-4 sm:px-6">
       <div className="flex flex-col lg:flex-row gap-6 max-w-[1920px] mx-auto">
 
-        {/* Left Sidebar - Degree Info */}
+        {/* ============================================================
+            LEFT SIDEBAR - DEGREE INFO
+        ============================================================ */}
         <aside className="lg:w-96 flex-shrink-0">
           <div className="sticky top-24 space-y-6">
 
@@ -225,42 +256,68 @@ export default function ProgramsPage() {
 
               {/* Quick Stats */}
               <div className="grid grid-cols-2 gap-3">
+
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
                   <div className="flex items-center gap-2 mb-1">
                     <FaClock className="text-third" />
-                    <span className="text-xs text-white/60">Үргэлжлэх хугацаа</span>
+                    <span className="text-xs text-white/60">
+                      Үргэлжлэх хугацаа
+                    </span>
                   </div>
-                  <p className="text-white font-bold text-sm">{currentDegreeInfo.duration}</p>
+
+                  <p className="text-white font-bold text-sm">
+                    {currentDegreeInfo.duration}
+                  </p>
                 </div>
 
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xs text-white/60">Кредит</span>
+                    <span className="text-xs text-white/60">
+                      Кредит
+                    </span>
                   </div>
-                  <p className="text-white font-bold text-sm">{currentDegreeInfo.credits}</p>
+
+                  <p className="text-white font-bold text-sm">
+                    {currentDegreeInfo.credits}
+                  </p>
                 </div>
 
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 col-span-2">
                   <div className="flex items-center gap-2 mb-1">
                     <FaGlobe className="text-third" />
-                    <span className="text-xs text-white/60">Хэл</span>
+
+                    <span className="text-xs text-white/60">
+                      Хэл
+                    </span>
                   </div>
-                  <p className="text-white font-bold text-sm">{currentDegreeInfo.language}</p>
+
+                  <p className="text-white font-bold text-sm">
+                    {currentDegreeInfo.language}
+                  </p>
                 </div>
+
               </div>
             </div>
 
-            {/* Features Card */}
+            {/* ========================================================
+                FEATURES CARD
+            ======================================================== */}
             {currentDegreeInfo.features.length > 0 && (
               <div className="bg-white rounded-2xl border border-gray-200 p-6">
                 <h3 className="text-lg font-bold text-primary mb-4 flex items-center gap-2">
                   <div className="w-1 h-6 bg-third rounded-full" />
+
                   Онцлог шинж чанарууд
                 </h3>
+
                 <ul className="space-y-3">
                   {currentDegreeInfo.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 text-sm text-gray-700"
+                    >
                       <div className="mt-1 w-1.5 h-1.5 rounded-full bg-third flex-shrink-0" />
+
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -268,22 +325,170 @@ export default function ProgramsPage() {
               </div>
             )}
 
-            {/* Programs Count */}
+            {/* ========================================================
+                BTEC RESOURCES
+                Only appears on BTEC page
+            ======================================================== */}
+            {degree === "BTEC" && (
+              <div className="space-y-3">
+
+                {/* PDF 1 */}
+                {currentDegreeInfo.pdf1 &&
+                  currentDegreeInfo.pdf1 !== "YOUR_FIRST_BTEC_PDF_URL_HERE" && (
+                    <a
+                      href={currentDegreeInfo.pdf1}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center justify-between w-full bg-white border-2 border-blue-200 hover:border-blue-500 rounded-2xl p-4 transition-all duration-300 hover:shadow-lg"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-11 h-11 rounded-xl bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center transition-colors">
+                          <FaFilePdf className="text-blue-600 text-xl" />
+                        </div>
+
+                        <div>
+                          <p className="text-xs text-gray-500 mb-1">
+                            BTEC хөтөлбөр
+                          </p>
+
+                          <p className="text-sm font-bold text-primary">
+                            Оюутны гарын авлага
+                          </p>
+                        </div>
+                      </div>
+
+                      <span className="text-red-600 font-bold text-lg group-hover:translate-x-1 transition-transform">
+                        →
+                      </span>
+                    </a>
+                  )}
+
+                {/* PDF 2 */}
+                {currentDegreeInfo.pdf2 &&
+                  currentDegreeInfo.pdf2 !== "YOUR_SECOND_BTEC_PDF_URL_HERE" && (
+                    <a
+                      href={currentDegreeInfo.pdf2}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center justify-between w-full bg-white border-2 border-blue-200 hover:border-blue-500 rounded-2xl p-4 transition-all duration-300 hover:shadow-lg"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-11 h-11 rounded-xl bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center transition-colors">
+                          <FaFilePdf className="text-blue-600 text-xl" />
+                        </div>
+
+                        <div>
+                          <p className="text-xs text-gray-500 mb-1">
+                            BTEC хөтөлбөр
+                          </p>
+
+                          <p className="text-sm font-bold text-primary">
+                            Танилцуулга
+                          </p>
+                        </div>
+                      </div>
+
+                      <span className="text-red-600 font-bold text-lg group-hover:translate-x-1 transition-transform">
+                        →
+                      </span>
+                    </a>
+                  )}
+
+                {/* YouTube 1 */}
+                {currentDegreeInfo.youtube1 &&
+                  currentDegreeInfo.youtube1 !== "YOUR_FIRST_BTEC_YOUTUBE_URL_HERE" && (
+                    <a
+                      href={currentDegreeInfo.youtube1}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center justify-between w-full bg-white border-2 border-red-200 hover:border-red-500 rounded-2xl p-4 transition-all duration-300 hover:shadow-lg"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-11 h-11 rounded-xl bg-red-50 group-hover:bg-red-100 flex items-center justify-center transition-colors">
+                          <FaYoutube className="text-red-600 text-xl" />
+                        </div>
+
+                        <div>
+                          <p className="text-xs text-gray-500 mb-1">
+                            BTEC хөтөлбөр
+                          </p>
+
+                          <p className="text-sm font-bold text-primary">
+                            Танилцуулга бичлэг
+                          </p>
+                        </div>
+                      </div>
+
+                      <span className="text-red-600 font-bold text-lg group-hover:translate-x-1 transition-transform">
+                        →
+                      </span>
+                    </a>
+                  )}
+
+                {/* YouTube 2 */}
+                {currentDegreeInfo.youtube2 &&
+                  currentDegreeInfo.youtube2 !== "YOUR_SECOND_BTEC_YOUTUBE_URL_HERE" && (
+                    <a
+                      href={currentDegreeInfo.youtube2}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center justify-between w-full bg-white border-2 border-red-200 hover:border-red-500 rounded-2xl p-4 transition-all duration-300 hover:shadow-lg"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-11 h-11 rounded-xl bg-red-50 group-hover:bg-red-100 flex items-center justify-center transition-colors">
+                          <FaYoutube className="text-red-600 text-xl" />
+                        </div>
+
+                        <div>
+                          <p className="text-xs text-gray-500 mb-1">
+                            BTEC хөтөлбөр
+                          </p>
+
+                          <p className="text-sm font-bold text-primary">
+                            Танилцуулга бичлэг 2
+                          </p>
+                        </div>
+                      </div>
+
+                      <span className="text-red-600 font-bold text-lg group-hover:translate-x-1 transition-transform">
+                        →
+                      </span>
+                    </a>
+                  )}
+
+              </div>
+            )}
+
+            {/* ========================================================
+                PROGRAMS COUNT
+            ======================================================== */}
             <div className="bg-third/10 border border-third/20 rounded-xl p-4 text-center">
-              <p className="text-sm text-gray-600 mb-1">Нийт хөтөлбөр</p>
-              <p className="text-3xl font-black text-primary">{programs.length}</p>
+              <p className="text-sm text-gray-600 mb-1">
+                Нийт хөтөлбөр
+              </p>
+
+              <p className="text-3xl font-black text-primary">
+                {programs.length}
+              </p>
             </div>
 
           </div>
         </aside>
 
-        {/* Right Content - Programs Grid */}
+        {/* ============================================================
+            RIGHT CONTENT - PROGRAMS GRID
+        ============================================================ */}
         <main className="flex-1 min-w-0">
           {!normalised.length ? (
             <div className="flex items-center justify-center h-96 bg-white rounded-2xl border border-gray-200">
               <div className="text-center">
-                <div className="text-6xl mb-4">📭</div>
-                <p className="text-gray-500">Энэ түвшний хөтөлбөр одоогоор алга байна.</p>
+                <div className="text-6xl mb-4">
+                  📭
+                </div>
+
+                <p className="text-gray-500">
+                  Энэ түвшний хөтөлбөр одоогоор алга байна.
+                </p>
               </div>
             </div>
           ) : (
@@ -291,8 +496,13 @@ export default function ProgramsPage() {
               {normalised.map((p) => (
                 <Link
                   key={p.id}
-                  to={`/programs/id/${p.id}?type=${isInternational ? "intl" : "regular"}`}
-                  state={{ degree, isInternational }}
+                  to={`/programs/id/${p.id}?type=${
+                    isInternational ? "intl" : "regular"
+                  }`}
+                  state={{
+                    degree,
+                    isInternational,
+                  }}
                   className="group relative flex flex-col overflow-hidden bg-white rounded-xl border-2 border-gray-200 hover:border-third hover:shadow-xl transition-all duration-300"
                 >
                   {/* Image */}
@@ -303,11 +513,13 @@ export default function ProgramsPage() {
                         alt={p.major}
                         className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
                       />
+
                       <div className="absolute inset-0 flex items-center justify-center bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <span className="px-6 py-2 text-sm font-bold text-primary bg-third rounded-full">
                           Дэлгэрэнгүй →
                         </span>
                       </div>
+
                       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/40 to-transparent" />
                     </div>
                   )}
@@ -319,24 +531,35 @@ export default function ProgramsPage() {
                     </h3>
 
                     <div className="space-y-2 mt-auto">
+
                       {p.university && (
                         <div className="flex items-center gap-2 text-xs text-gray-600">
                           <FaUniversity className="text-primary flex-shrink-0" />
-                          <span className="line-clamp-1">{p.university}</span>
+
+                          <span className="line-clamp-1">
+                            {p.university}
+                          </span>
                         </div>
                       )}
 
                       <div className="flex items-center gap-2 text-xs text-gray-600">
                         <FaMapMarkerAlt className="text-third flex-shrink-0" />
-                        <span>{p.country}, {p.city}</span>
+
+                        <span>
+                          {p.country}, {p.city}
+                        </span>
                       </div>
 
                       {p.duration && (
                         <div className="flex items-center gap-2 text-xs text-gray-600">
                           <FaClock className="text-primary flex-shrink-0" />
-                          <span>{p.duration}</span>
+
+                          <span>
+                            {p.duration}
+                          </span>
                         </div>
                       )}
+
                     </div>
                   </div>
                 </Link>

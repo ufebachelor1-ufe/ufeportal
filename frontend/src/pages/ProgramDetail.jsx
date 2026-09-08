@@ -440,6 +440,9 @@ function normaliseRegular(raw) {
     tuition_info: raw.tuition,
     description: raw.description ?? null,
     video_link: raw.video_url,
+    video_link2: raw.video_url2 ?? null,
+    pdf_link1: raw.pdf_url ?? null,
+    pdf_link2: raw.pdf_url2 ?? null,
     flag_image: raw.flag_image ?? null,
     university_link: raw.university_link ?? null,
     brochure: raw.brochure ?? null,
@@ -920,44 +923,52 @@ export default function ProgramDetail() {
 
               </div>
             )}
-
             {/* MEDIA BUTTONS */}
-            {(data.brochure ||
+            {(data.pdf_link1 ||
+              data.pdf_link2 ||
               data.reel ||
               data.university_link) && (
 
               <div className="pd-media-row">
 
-                {data.brochure && (
+                {/* PDF 1 */}
+                {data.pdf_link1 && (
                   <button
                     className="pd-btn pd-btn-red"
-                    onClick={() =>
-                      openLink(data.brochure)
-                    }
+                    onClick={() => openLink(data.pdf_link1)}
                   >
                     <FaFilePdf />
-                    Брошюр үзэх
+                    PDF 1 үзэх
                   </button>
                 )}
 
+                {/* PDF 2 */}
+                {data.pdf_link2 && (
+                  <button
+                    className="pd-btn pd-btn-red"
+                    onClick={() => openLink(data.pdf_link2)}
+                  >
+                    <FaFilePdf />
+                    PDF 2 үзэх
+                  </button>
+                )}
+
+                {/* Reel */}
                 {data.reel && (
                   <button
                     className="pd-btn pd-btn-blue"
-                    onClick={() =>
-                      openLink(data.reel)
-                    }
+                    onClick={() => openLink(data.reel)}
                   >
                     <FaVideo />
                     Reel үзэх
                   </button>
                 )}
 
+                {/* University Website */}
                 {data.university_link && (
                   <button
                     className="pd-btn pd-btn-green"
-                    onClick={() =>
-                      openLink(data.university_link)
-                    }
+                    onClick={() => openLink(data.university_link)}
                   >
                     <FaGlobe />
                     Сургуулийн вэб
@@ -967,18 +978,25 @@ export default function ProgramDetail() {
               </div>
             )}
 
-            {/* VIDEO */}
+            {/* VIDEO 1 */}
             {data.video_link && (
               <div className="pd-video">
-
                 <iframe
-                  src={getEmbedLink(
-                    data.video_link
-                  )}
+                  src={getEmbedLink(data.video_link)}
                   allowFullScreen
-                  title="University Video"
+                  title="University Video 1"
                 />
+              </div>
+            )}
 
+            {/* VIDEO 2 */}
+            {data.video_link2 && (
+              <div className="pd-video">
+                <iframe
+                  src={getEmbedLink(data.video_link2)}
+                  allowFullScreen
+                  title="University Video 2"
+                />
               </div>
             )}
 
