@@ -348,11 +348,11 @@ export default function ProgramsPage() {
 
                         <div>
                           <p className="text-xs text-gray-500 mb-1">
-                            BTEC хөтөлбөр
+                            BTEC олон улсын дипломын хөтөлбөрийн
                           </p>
 
                           <p className="text-sm font-bold text-primary">
-                            Оюутны гарын авлага
+                            Оюутны хөтөч
                           </p>
                         </div>
                       </div>
@@ -379,7 +379,7 @@ export default function ProgramsPage() {
 
                         <div>
                           <p className="text-xs text-gray-500 mb-1">
-                            BTEC хөтөлбөр
+                            BTEC олон улсын дипломын хөтөлбөрийн
                           </p>
 
                           <p className="text-sm font-bold text-primary">
@@ -410,7 +410,7 @@ export default function ProgramsPage() {
 
                         <div>
                           <p className="text-xs text-gray-500 mb-1">
-                            BTEC хөтөлбөр
+                            BTEC олон улсын дипломын хөтөлбөрийн
                           </p>
 
                           <p className="text-sm font-bold text-primary">
@@ -441,7 +441,7 @@ export default function ProgramsPage() {
 
                         <div>
                           <p className="text-xs text-gray-500 mb-1">
-                            BTEC хөтөлбөр
+                            BTEC олон улсын дипломын хөтөлбөрийн
                           </p>
 
                           <p className="text-sm font-bold text-primary">
