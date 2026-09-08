@@ -938,7 +938,7 @@ export default function ProgramDetail() {
                     onClick={() => openLink(data.pdf_link1)}
                   >
                     <FaFilePdf />
-                    PDF 1 үзэх
+                    Оюутны гарын авлага
                   </button>
                 )}
 
@@ -949,7 +949,7 @@ export default function ProgramDetail() {
                     onClick={() => openLink(data.pdf_link2)}
                   >
                     <FaFilePdf />
-                    PDF 2 үзэх
+                    Оюутны хөтөч
                   </button>
                 )}
 
