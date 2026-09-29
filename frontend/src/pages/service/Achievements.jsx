@@ -42,7 +42,7 @@ export default function Achievements() {
         <div className="h-1 absolute top-0 left-0 right-0 bg-gradient-to-r from-third via-third/80 to-third"></div>
         <div className="relative">
           <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
-            Амжилт тэтгэлгийн бүртгэл
+            Амжилтын бүртгэл
           </h2>
           <p className="text-white/80 text-base leading-relaxed max-w-4xl mb-6">
             Оюутан та өөрийн гаргасан амжилт, тэтгэлгээ бүртгүүлснээр СЭЗИС-ийн Оны шилдэг оюутан,
