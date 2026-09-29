@@ -54,7 +54,7 @@ const MainLayout = ({ children }) => {
       items: [
         { name: "Бүрэлдэхүүн", link: "/bsa/staff" },
         { name: "Бүтэц", link: "/bsa/org" },
-        { name: "Журам", link: "/bsa/rules" },
+        { name: "Журам, удирдамж", link: "/bsa/rules" },
         { name: "Хүсэлт гаргах", link: "/bsa/req" },
         { name: "Бусад албаны чиг үүрэг", link: "/bsa/others" },
         { name: "Чухал үйл явдал", link: "/bsa/calendar" },

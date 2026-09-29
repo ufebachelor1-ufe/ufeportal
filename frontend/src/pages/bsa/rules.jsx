@@ -6,7 +6,7 @@ const sections = [
   {
     title: "Бакалаврын сургалт зохион байгуулах журам",
     desc: "Сургалтын бүтэц, зохион байгуулалттай холбоотой журам",
-    to: "https://ufenu.sharepoint.com/:b:/s/UFE-files/ERmR6HpBQqtKhMJwZulUh2IBHT8gAtr5ga0g1psnYDyakQ?e=mP6LWS",
+    to: "https://ufenu.sharepoint.com/:b:/s/database/IQAzHv71bp-lTapszEpKHnQkAf4ljqIe0NlzMVmecUlPx90?e=aOCmgT",
     badge: "Журам",
   },
   {
@@ -30,7 +30,7 @@ const sections = [
   {
     title: "Оюутны сайн дурын ажил гүйцэтгэх журам",
     desc: "Сайн дурын ажилд оюутнуудыг татан оролцуулах, дэмжлэг үзүүлэх",
-    to: "https://ufenu.sharepoint.com/sites/UFE-files/DocLib/Forms/All%20invoices.aspx?id=%2Fsites%2FUFE%2Dfiles%2FDocLib%2F04%2E%20%D0%9E%D1%8E%D1%83%D1%82%D0%BD%D1%8B%20%D1%81%D0%B0%D0%B9%D0%BD%20%D0%B4%D1%83%D1%80%D1%8B%D0%BD%20%D0%B0%D0%B6%D0%B8%D0%BB%20%D0%B3%D2%AF%D0%B9%D1%86%D1%8D%D1%82%D0%B3%D1%8D%D1%85%20%D0%B6%D1%83%D1%80%D0%B0%D0%BC%20%2Epdf&parent=%2Fsites%2FUFE%2Dfiles%2FDocLib",
+    to: "https://ufenu.sharepoint.com/:b:/s/database/IQDA3OZCDUN9TqpKL-ZnGovYAcPWf69wS2MVMIbCIABXOiQ?e=6Kc21T",
     badge: "Журам",
   },
   {
@@ -58,7 +58,7 @@ const sections = [
     badge: "Удирдамж",
   },
   {
-    title: "СЭЗИС-ийн бакалаврын хөтөлбөрийн мэргэжлийн чиглэлийн амжилт гаргасан шагнах удирмш урамшуулал тухай",
+    title: "СЭЗИС-ийн бакалаврын хөтөлбөрийн мэргэжлийн чиглэлийн амжилт гаргасан шагнах урамшуулал тухай",
     desc: "",
     to: "https://ufenu.sharepoint.com/sites/UFE-files/DocLib/Forms/All%20invoices.aspx?id=%2Fsites%2FUFE%2Dfiles%2FDocLib%2F09%2E%20%D0%A1%D0%AD%D0%97%D0%98%D0%A1%2D%D0%B8%D0%B9%D0%BD%20%D0%B1%D0%B0%D0%BA%D0%B0%D0%BB%D0%B0%D0%B2%D1%80%D1%8B%D0%BD%20%D1%85%D3%A9%D1%82%D3%A9%D0%BB%D0%B1%D3%A9%D1%80%D0%B8%D0%B9%D0%BD%20%D0%BC%D1%8D%D1%80%D0%B3%D1%8D%D0%B6%D0%BB%D0%B8%D0%B9%D0%BD%20%D1%87%D0%B8%D0%B3%D0%BB%D1%8D%D0%BB%D1%8D%D1%8D%D1%80%20%D0%B0%D0%BC%D0%B6%D0%B8%D0%BB%D1%82%20%D0%B3%D0%B0%D1%80%D0%B3%D0%B0%D1%81%D0%B0%D0%BD%20%D0%BE%D1%8E%D1%83%D1%82%D0%BD%D1%8B%D0%B3%20%D1%88%D0%B0%D0%B3%D0%BD%D0%B0%D0%B6%20%D1%83%D1%80%D0%B0%D0%BC%D1%88%D1%83%D1%83%D0%BB%D0%B0%D1%85%20%D1%82%D1%83%D1%85%D0%B0%D0%B9%2Epdf&parent=%2Fsites%2FUFE%2Dfiles%2FDocLib",
     badge: "",
@@ -78,7 +78,7 @@ const sections = [
   {
     title: "Нийгмийн дадлага удирдамж",
     desc: "",
-    to: "https://ufenu.sharepoint.com/:b:/s/UFE-files/EQQA5iWF5slDvm7rJ6gIFOEBYFjjN95mF2ttfn6pUC1o5Q?e=6wiCfw",
+    to: "https://ufenu.sharepoint.com/:b:/s/database/IQAZpoFFBU7MR4zctiN0hJVjAWIi0HCskv2BDXcVIdt6hx0?e=h3RKqM",
     badge: "Удирдамж",
   },
   {
@@ -90,7 +90,7 @@ const sections = [
   {
     title: "СЭЗИС-ийн Ректорын нэрэмжит тэтгэлэг олгoх тухай",
     desc: "",
-    to: "https://ufenu.sharepoint.com/sites/UFE-files/DocLib/Forms/All%20invoices.aspx?id=%2Fsites%2FUFE%2Dfiles%2FDocLib%2F14%2E%20%D0%A1%D0%AD%D0%97%D0%98%D0%A1%2D%D0%B8%D0%B9%D0%BD%20%D0%A0%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D1%8B%D0%BD%20%D0%BD%D1%8D%D1%80%D1%8D%D0%BC%D0%B6%D0%B8%D1%82%20%D1%82%D1%8D%D1%82%D0%B3%D1%8D%D0%BB%D1%8D%D0%B3%20%D0%BE%D0%BB%D0%B3%D0%BE%D1%85%20%D1%82%D1%83%D1%85%D0%B0%D0%B9%2Epdf&parent=%2Fsites%2FUFE%2Dfiles%2FDocLib",
+    to: "https://ufenu.sharepoint.com/:b:/s/database/IQCW7YVsyueZSpS1i3D4uTSjAY4lG5BHSGp68li_Ne9ILy4?e=oOlcQA",
     badge: "Удирдамж",
   },
   {
@@ -150,7 +150,7 @@ const sections = [
   {
     title: "СЭЗИС-ийн Ажлын байранд суурилсан сургалтын хөтөлбөрийг зохион байгуулах журам батлах тухай",
     desc: "",
-    to: "https://ufenu.sharepoint.com/sites/UFE-files/DocLib/Forms/All%20invoices.aspx?id=%2Fsites%2FUFE%2Dfiles%2FDocLib%2F%D0%90%2077%202024%2D03%2D20%20%D0%90%D0%B6%D0%BB%D1%8B%D0%BD%20%D0%B1%D0%B0%D0%B9%D1%80%D0%B0%D0%BD%D0%B4%20%D1%81%D1%83%D1%83%D1%80%D0%B8%D0%BB%D1%81%D0%B0%D0%BD%20%D0%B4%D0%B0%D0%B4%D0%BB%D0%B0%D0%B3%D0%B0%D0%B6%D0%B8%D1%85%20%D1%85%D3%A9%D1%82%D3%A9%D0%BB%D0%B1%D3%A9%D1%80%20%D0%B7%D0%BE%D1%85%D0%B8%D0%BE%D0%BD%20%D0%B1%D0%B0%D0%B9%D0%B3%D1%83%D1%83%D0%BB%D0%B0%D1%85%20%D0%B6%D1%83%D1%80%D0%B0%D0%BC%20%D1%88%D0%B8%D0%BD%D1%8D%D1%87%D0%BB%D1%8D%D0%BD%20%D0%B1%D0%B0%D1%82%D0%BB%D0%B0%D1%85%20%D1%82%D1%83%D1%85%D0%B0%D0%B9%2Epdf&parent=%2Fsites%2FUFE%2Dfiles%2FDocLib&p=true&ga=1",
+    to: "https://ufenu.sharepoint.com/:b:/s/database/IQBgvOZkB_YVS5ilft2-L8aYAaDWxhmSbPh8YF5zUNyCZLY?e=gSxhHN",
     badge: "Журам",
   },
 ];
