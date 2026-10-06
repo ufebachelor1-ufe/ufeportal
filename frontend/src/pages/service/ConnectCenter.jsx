@@ -19,8 +19,7 @@ export default function ConnectCenter() {
         
         <div className="flex items-center gap-3">
           <span className="text-blue-600"></span>
-          <p><strong>Хуваарь:</strong> 2026.04.22 – 2026.07.03</p>
-          <p>Пүрэв, Баасан | 14:00 – 17:30</p>
+          <p><strong>Хуваарь:</strong> 2026.10.05 – 2026.10.30</p>
         </div>
       </div>
 
