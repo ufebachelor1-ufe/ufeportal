@@ -51,7 +51,7 @@ export default function Achievements() {
             амжилтыг бататгах, улмаар СЭЗИС-ийн нэр хүнд, үнэ цэнийг нэмэгдүүлэх ач холбогдолтой.
           </p>
           <a
-            href="https://forms.office.com/pages/responsepage.aspx?id=HZFS4HexkUaAnXnjPNM-eBaMVZK3QeRLlJFKXKxQgaNUOTg4T0xYTFlLODZFOUFHQUFHRFRaTTBJWS4u&route=shorturl"
+            href="https://forms.cloud.microsoft/r/en27riHiVt"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-md"

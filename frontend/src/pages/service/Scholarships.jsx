@@ -85,12 +85,12 @@ export default function Scholarships() {
       <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary/95 to-primary/80 p-8 sm:p-12">
         <div className="h-1 absolute top-0 left-0 right-0 bg-gradient-to-r from-third via-third/80 to-third"></div>
         <div className="relative">
-          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">Амжилт тэтгэлгийн бүртгэл</h2>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">Тэтгэлгийн бүртгэл</h2>
           <p className="text-white/80 text-base leading-relaxed max-w-4xl mb-6">
             Оюутан та өөрийн гаргасан амжилт, тэтгэлгээ бүртгүүлснээр СЭЗИС-ийн Оны шилдэг оюутан, Онцлох төгсөгчид нэрээ дэвшүүлэх, гадаадын их дээд сургуульд дэвшин суралцах, болон сургуулийн захиргааны шагналд тодорхойлуулах, цаашлаад хөтөлбөр хэрэгжүүлэгч нэгжийн амжилтыг бататгах, улмаар СЭЗИС-ийн нэр хүнд, үнэ цэнийг нэмэгдүүлэх ач холбогдолтой.
           </p>
           <a
-            href="https://forms.office.com/pages/responsepage.aspx?id=HZFS4HexkUaAnXnjPNM-eBaMVZK3QeRLlJFKXKxQgaNUOTg4T0xYTFlLODZFOUFHQUFHRFRaTTBJWS4u&route=shorturl"
+            href="https://forms.cloud.microsoft/r/3zWZa4wuSD"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-md"
