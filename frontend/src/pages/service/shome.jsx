@@ -237,14 +237,6 @@ export default function StudentServices() {
     },
 
     {
-      name: "Б.Ганчимэг",
-      position: "ЗОХИЦУУЛАГЧ",
-      email: "GANCHIMEG.BA@UFE.EDU.MN",
-      room: "C-303A тоот",
-      image: "/ganchimeg.jpg",
-    },
-
-    {
       name: "Т.Отгонцэцэг",
       position: "ЗОХИЦУУЛАГЧ",
       email: "OTGONTSETSEG@UFE.EDU.MN",
