@@ -86,7 +86,7 @@ const MainLayout = ({ children }) => {
         { name: "Оюутны холбоо", link: "/services/student-union" },
         { name: "Клуб", link: "/services/clubs" },
         { name: "Тэмдэгтийн хөтөлбөр", link: "/services/merit-program" },
-        //{ name: "Оюутны амьдрал", link: "/services/student-life" },
+        { name: "Оюутны цахим сэтгүүл", link: "/services/student-life" },
         //{ name: "Ажлын байр", link: "/services/jobs" },
       ],
     },

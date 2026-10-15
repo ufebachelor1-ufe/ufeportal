@@ -37,7 +37,7 @@ export default function StudentServices() {
     { title: "Оюутны холбоо", path: "student-union" },
     { title: "Клубүүд", path: "clubs" },
     { title: "Тэмдэгтийн хөтөлбөр", path: "merit-program" },
-    // { title: "Оюутны амьдрал", path: "student-life" },
+    { title: "Оюутны цахим сэтгүүл", path: "student-life" },
     // { title: "Ажлын байр", path: "jobs" },
   ];
 
