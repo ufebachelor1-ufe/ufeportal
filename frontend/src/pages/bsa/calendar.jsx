@@ -12,7 +12,8 @@ export default function Cal({ isHomePage = false }) {
   const TYPE_COLORS = {
     "БСА-ны ажил": "#60A5FA",
     "Оюутны хөгжлийн төвийн ажил": "#ed7d31",
-    "Оюутны холбоо, Оюутны клуб": "#70ad47",
+    "Оюутны клуб": "#70ad47",
+    "Оюутны холбоо": "#050c6b",
     "Олон улсын хамтарсан хөтөлбөр": "#7030a0",
     "Хөтөлбөр хэрэгжүүлэгч нэгж" : "#7F1D1D",
     "Тэмдэглэлт өдөр": "#c00000",
@@ -96,7 +97,11 @@ export default function Cal({ isHomePage = false }) {
           </span>
           <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#70ad47', boxShadow: '0 0 8px #70ad47' }} />
-            Оюутны холбоо, Оюутны клуб
+            Оюутны клуб
+          </span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#050c6b', boxShadow: '0 0 8px #050c6b' }} />
+            Оюутны холбоо
           </span>
           <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#7030a0', boxShadow: '0 0 8px #7030a0' }} />
