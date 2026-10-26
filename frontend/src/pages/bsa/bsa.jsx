@@ -6,6 +6,7 @@ import Rules from "./rules";
 import Req from "./req";
 import Others from "./others";
 import Cal from "./calendar";
+import Rooms from "./rooms";
 import { supabase2 } from "../../supabase2";
 
 // React icons
@@ -26,6 +27,7 @@ export default function Bsa() {
     { title: "Хүсэлт гаргах", path: "req" },
     { title: "Бусад албаны чиг үүрэг", path: "others"},
     { title: "Чухал үйл явдал", path: "calendar"},
+    { title: "Ангийн хуваарь", path: "rooms"},
   ];
 
   return (
@@ -70,6 +72,7 @@ export default function Bsa() {
           <Route path="req" element={<Req />} />
           <Route path="others" element={<Others />} />
           <Route path="calendar" element={<Cal />} />
+          <Route path="rooms" element={<Rooms />} />
         </Routes>
       </main>
     </div>

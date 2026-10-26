@@ -80,9 +80,9 @@ export default function Cal({ isHomePage = false }) {
             Чухал үйл явдал
           </h2>
           <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(255,240,0,0.4), transparent)' }} />
-          <p1 style={{ fontWeight: 'bold', fontSize: '14px', color: 'rgb(255, 255, 255)', fontFamily: "'Montserrat','DM Sans', sans-serif", margin: 0 }}>
+          <p style={{ fontWeight: 'bold', fontSize: '14px', color: 'rgb(255, 255, 255)', fontFamily: "'Montserrat','DM Sans', sans-serif", margin: 0 }}>
             Тухайн өдрийн дэлгэрэнгүйг харахын тулд тухайн өдөр дээр дарна уу.
-          </p1>
+          </p>
         </div>
 
         {/* Legend */}

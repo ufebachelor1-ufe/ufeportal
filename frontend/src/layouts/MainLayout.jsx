@@ -58,6 +58,7 @@ const MainLayout = ({ children }) => {
         { name: "Хүсэлт гаргах", link: "/bsa/req" },
         { name: "Бусад албаны чиг үүрэг", link: "/bsa/others" },
         { name: "Чухал үйл явдал", link: "/bsa/calendar" },
+        { name: "Ангийн хуваарь", link: "/bsa/rooms"},
       ],
     },
     {
