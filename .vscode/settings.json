@@ -4,5 +4,9 @@
     "workbench.activityBar.compact": false,
     "workbench.activityBar.iconClickBehavior": "toggle",
     "workbench.activityBar.location": "default",
-    "workbench.sideBar.location": "left"
+    "workbench.sideBar.location": "left",
+    "files.exclude": {
+        "frontend/dist": true
+    },
+    "terminal.integrated.cwd": "${workspaceFolder}/frontend"
 }

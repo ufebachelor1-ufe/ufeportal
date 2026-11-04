@@ -19,7 +19,7 @@ export default function ConnectCenter() {
         
         <div className="flex items-center gap-3">
           <span className="text-blue-600"></span>
-          <p><strong>Хуваарь:</strong> 2026.10.05 – 2026.10.30</p>
+          <p><strong>Хуваарь:</strong> 2026.11.05 – 2026.11.30</p>
         </div>
       </div>
 
@@ -27,7 +27,7 @@ export default function ConnectCenter() {
       <div className="p-4 bg-white border border-gray-200 shadow-sm rounded-xl">
         <div className="overflow-hidden rounded-lg">
           <img
-            src="/images/connect_schedule2.png"
+            src="/images/connectzone.jpg"
             alt="UFE Connect Zone хуваарь"
             className="object-contain w-full"
           />
