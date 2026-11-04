@@ -190,13 +190,18 @@ export default function Cal({ isHomePage = false }) {
     return (
       <div className="bg-white rounded-3xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.45)]">
         <div className="p-5 sm:p-7">
+          {/* Section heading: same typography as the /bsa/calendar header, in primary for the white card */}
+          <div className="flex items-center gap-3 mb-4">
+            <p className="text-lg font-bold uppercase tracking-[0.1em] text-primary">Чухал үйл явдал</p>
+            <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent" />
+          </div>
+
           {/* Header */}
           <div className="flex items-start justify-between gap-4">
-            <div>
+            <div className="flex flex-wrap items-baseline min-w-0">
               <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-gray-500">Өнөөдөр</p>
-              <h2 className="mt-1 text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">
-                {formatMonthDay(today)} · {WEEKDAYS[today.getDay()]}
-              </h2>
+              <span aria-hidden="true" className="mx-2 text-gray-400">·</span>
+              <h2 className="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">{formatMonthDay(today)}</h2>
             </div>
             <Link
               to="/bsa/calendar"
