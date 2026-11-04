@@ -11,6 +11,14 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
+/* Homepage: calendar sits directly inside a white card */
+.calendar-wrapper--embedded {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
 /* ─── Toolbar (header) ─── */
 .fc .fc-toolbar {
   gap: 8px;

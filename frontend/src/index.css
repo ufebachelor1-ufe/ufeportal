@@ -15,3 +15,14 @@
     -moz-osx-font-smoothing: grayscale;
   }
 }
+
+/* Homepage carousel progress (horizontal on small screens, vertical on wide) */
+@keyframes progressX {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes progressY {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}

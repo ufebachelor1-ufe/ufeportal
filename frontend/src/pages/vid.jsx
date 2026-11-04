@@ -1,10 +1,25 @@
 import { useEffect, useState } from "react";
-import { supabase2 } from "../supabase2";
 import { Link } from "react-router-dom";
+import { supabase2 } from "../supabase2";
+
+// Accepts youtube.com/watch?v=, youtu.be/, youtube.com/shorts/ and /embed/ links
+const getVideoId = (url) => {
+  if (!url) return null;
+  try {
+    const u = new URL(url.trim());
+    if (u.hostname.includes("youtu.be")) return u.pathname.slice(1).split("/")[0] || null;
+    if (u.searchParams.get("v")) return u.searchParams.get("v");
+    const match = u.pathname.match(/\/(shorts|embed)\/([^/?]+)/);
+    return match ? match[2] : null;
+  } catch {
+    return null;
+  }
+};
 
 export default function Vid() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [playingId, setPlayingId] = useState(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -13,7 +28,7 @@ export default function Vid() {
         .select("id, title, image_url, description, created_at")
         .eq("type", "Видео контент")
         .order("created_at", { ascending: false })
-        .limit(2);
+        .limit(6);
 
       if (error) console.error(error);
       else setPosts(data);
@@ -24,97 +39,84 @@ export default function Vid() {
     fetchPosts();
   }, []);
 
-  const getEmbedUrl = (url) => {
-    if (!url) return null;
-
-    let videoId = null;
-    if (url.includes("youtube.com/watch")) {
-      const params = new URLSearchParams(new URL(url).search);
-      videoId = params.get("v");
-    } else if (url.includes("youtu.be/")) {
-      videoId = url.split("youtu.be/")[1];
-    }
-
-    return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
-  };
-
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-32 bg-primary border border-third/20 rounded-lg backdrop-blur-sm">
-        <p className="text-white/50 text-sm">Loading videos...</p>
-      </div>
-    );
-  }
+  const videos = posts
+    .map((post) => ({ ...post, videoId: getVideoId(post.description) }))
+    .filter((post) => post.videoId);
 
   return (
-    <div className="bg-primary border border-third/20 rounded-lg p-6 backdrop-blur-sm" style={{ minHeight: '420px' }}>
+    <div className="flex flex-col h-full p-4 bg-white border shadow-sm sm:p-5 lg:p-6 rounded-3xl border-gray-200/80">
       {/* Header */}
-      <div className="flex items-center gap-2 ">
-        <h2 className="text-sm font-bold tracking-[0.1em] uppercase text-third ">
-          Видео контент
-        </h2>
-        <div className="flex-1 h-px bg-gradient-to-r from-third/40 to-transparent" />
-        <Link 
+      <div className="flex items-end justify-between gap-4 mb-4">
+        <div className="min-w-0">
+          <p className="mb-1 text-[11px] font-semibold tracking-[0.14em] uppercase text-primary/70">Медиа</p>
+          <h2 className="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">Видео контент</h2>
+        </div>
+        <Link
           to="/vidall"
-          className="ml-2 px-3 py-1.5 text-xs font-bold text-primary bg-third rounded transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 uppercase tracking-wider whitespace-nowrap"
+          className="inline-flex items-center gap-1.5 shrink-0 text-sm font-semibold text-primary hover:text-primary/80 group"
         >
-          Бүгдийг үзэх →
+          Бүгдийг үзэх
+          <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
         </Link>
       </div>
 
-      {/* Video Grid - 2 items stacked */}
-      <div className="space-y-2 gap-2 mt-4 ">
-        {posts.map((post) => {
-          const embedUrl = getEmbedUrl(post.description);
-
-          return (
-            <div
-              key={post.id}
-              className="group bg-white/95 rounded-lg shadow-md border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-xl"
-            >
-              {/* Video/Image */}
-              {embedUrl && (
-                <div className="relative w-full h-32 overflow-hidden bg-black">
-                  {post.image_url && (
-                    <img
-                      src={post.image_url}
-                      alt={post.title}
-                      className="object-cover w-full h-full transition-opacity duration-300 group-hover:opacity-0"
+      {loading ? (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[0, 1, 2].map((i) => (
+            <div key={i} className="aspect-video rounded-xl bg-gray-100 animate-pulse" />
+          ))}
+        </div>
+      ) : videos.length > 0 ? (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {videos.map((post) => {
+            const thumb = post.image_url || `https://img.youtube.com/vi/${post.videoId}/hqdefault.jpg`;
+            const playing = playingId === post.id;
+            return (
+              <div key={post.id} className="min-w-0">
+                <div className="relative overflow-hidden bg-black aspect-video rounded-xl">
+                  {playing ? (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${post.videoId}?autoplay=1&rel=0`}
+                      title={post.title}
+                      className="absolute inset-0 w-full h-full"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
                     />
-                  )}
-                  
-                  <iframe
-                    src={embedUrl}
-                    title={post.title}
-                    className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${post.image_url ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-
-                  {/* Play icon overlay when not hovered */}
-                  {post.image_url && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
-                      <div className="w-12 h-12 rounded-full bg-third/90 flex items-center justify-center">
-                        <svg className="w-6 h-6 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z"/>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => setPlayingId(post.id)}
+                      aria-label={`${post.title} — тоглуулах`}
+                      className="absolute inset-0 group"
+                    >
+                      <img
+                        src={thumb}
+                        alt=""
+                        loading="lazy"
+                        className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
+                      <span className="absolute inset-0 transition-colors bg-black/20 group-hover:bg-black/35" />
+                      <span className="absolute flex items-center justify-center transition-transform -translate-x-1/2 -translate-y-1/2 rounded-full shadow-lg left-1/2 top-1/2 w-14 h-14 bg-white/95 group-hover:scale-105">
+                        <svg className="w-5 h-5 ml-0.5 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
                         </svg>
-                      </div>
-                    </div>
+                      </span>
+                    </button>
                   )}
                 </div>
-              )}
-
-              {/* Title */}
-              <div className="p-2.5">
-                <p className="text-sm font-bold text-primary line-clamp-2 leading-snug">
-                  {post.title}
-                </p>
+                <p className="mt-2 text-sm font-semibold leading-snug text-gray-900 line-clamp-2">{post.title}</p>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="flex items-center justify-center flex-1 py-12">
+          <p className="text-sm text-gray-500">Одоогоор видео байхгүй байна</p>
+        </div>
+      )}
     </div>
   );
 }

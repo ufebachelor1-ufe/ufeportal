@@ -10,6 +10,7 @@ export default {
         primary: '#0132a6',
         secondary: '#0000ff',
         third : "gold",
+        navy: '#0b1534',
       },
       fontFamily: {
         sans: [
