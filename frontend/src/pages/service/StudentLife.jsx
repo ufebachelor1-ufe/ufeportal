@@ -134,6 +134,16 @@ const newsletters = [
     url: "https://www.canva.com/design/DAHWpNJXSSM/JtjXDqh8EvKERbnhhYkiWg/view?embed",
     link: "https://www.canva.com/design/DAHWpNJXSSM/JtjXDqh8EvKERbnhhYkiWg/view",
   },
+  {
+    title: "Дугаар 3",
+    url: "https://www.canva.com/design/DAHX8mcC__8/MuQdppbcaQvlLmkYQOcvTQ/view?embed",
+    link: "https://canva.link/redquzlny7hpe5g",
+  },
+  {
+    title: "Дугаар 4",
+    url: "https://www.canva.com/design/DAHZ1OeDH5o/c4VVAhazdbIlaBQ7mc-tHA/view?embed",
+    link: "https://canva.link/l22l3w2lbpqyevx",
+  },
 ];
 
 const videos = [

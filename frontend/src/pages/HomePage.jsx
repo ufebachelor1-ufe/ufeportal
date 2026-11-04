@@ -390,7 +390,7 @@ function LatestNews() {
 // ── Student newsletter (Canva MP4) videos ─────────────────────────────
 // Canva-exported student newsletter issues served from public/videos.
 // To add a new issue, drop the MP4 into public/videos and add its file name here (newest first).
-const NEWSLETTER_FILES = ["Дугаар 3.mp4", "Дугаар 2.mp4", "Дугаар 1.mp4"];
+const NEWSLETTER_FILES = ["Дугаар 4.mp4","Дугаар 3.mp4", "Дугаар 2.mp4", "Дугаар 1.mp4"];
 const VIDEOS = NEWSLETTER_FILES.map((name) => `/videos/${encodeURIComponent(name)}`);
 const issueName = (i) => NEWSLETTER_FILES[i].replace(/\.mp4$/i, "");
 
