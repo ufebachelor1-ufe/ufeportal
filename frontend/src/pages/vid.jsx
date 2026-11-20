@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { supabase2 } from "../supabase2";
 
 // Accepts youtube.com/watch?v=, youtu.be/, youtube.com/shorts/ and /embed/ links
-const getVideoId = (url) => {
+export const getVideoId = (url) => {
   if (!url) return null;
   try {
     const u = new URL(url.trim());
